@@ -93,51 +93,50 @@
   <img src="logo.png" alt="GPAT Gyan Logo" class="logo">
   <h1>Class Management System</h1>
   <div class="container">
-    <h3>Enter Your Registered Mobile Number</h3>
-    <input type="text" id="mobileNumber" placeholder="Enter mobile number">
+    <h3>Enter Registered Email ID (Admin / Student)</h3>
+    <input type="text" id="emailID" placeholder="Enter Email ID">
     <button onclick="verifyUser()">Submit</button>
     <p id="message"></p>
     <div id="subjects" style="display: none;">
       <h3 class="welcome-message">Welcome, <span id="userName"></span></h3>
-      <button class="subject-button" onclick="joinClass('pharmaceutics')">Pharmaceutics</button>
-      <button class="subject-button" onclick="joinClass('pharmacology')">Pharmacology</button>
-      <button class="subject-button" onclick="joinClass('pharmaceutical_chemistry')">Pharmaceutical Chemistry</button>
-      <button class="subject-button" onclick="joinClass('pharmacognosy')">Pharmacognosy</button>
-      <button class="subject-button" onclick="joinClass('allied_subjects')">Allied Subjects</button>
+      <button class="subject-button" onclick="joinClass('Pharmaceutics')">Pharmaceutics</button>
+      <button class="subject-button" onclick="joinClass('Pharmacology')">Pharmacology</button>
+      <button class="subject-button" onclick="joinClass('Pharmaceutical Chemistry')">Pharmaceutical Chemistry</button>
+      <button class="subject-button" onclick="joinClass('Pharmacognosy')">Pharmacognosy</button>
+      <button class="subject-button" onclick="joinClass('Allied Subjects')">Allied Subjects</button>
     </div>
   </div>
   <script>
     const students = {
-      "9876543210": "John Doe",
-      "9123456789": "Jane Smith"
+      "akashchandra1611@gmail.com": "Akash Chandra"
     };
     
     const admins = {
-      "9999999999": "Admin User"
+      "sudeshnachandra2002@gmail.com": "Akash Chandra"
     };
     
     const meetLinks = {
-      "pharmaceutics": "https://meet.google.com/example1",
-      "pharmacology": "https://meet.google.com/example2",
-      "pharmaceutical_chemistry": "https://meet.google.com/example3",
-      "pharmacognosy": "https://meet.google.com/example4",
-      "allied_subjects": "https://meet.google.com/example5"
+      "Pharmaceutics": "https://meet.google.com/example1",
+      "Pharmacology": "https://meet.google.com/example2",
+      "Pharmaceutical Chemistry": "https://meet.google.com/example3",
+      "Pharmacognosy": "https://meet.google.com/example4",
+      "Allied Subjects": "https://meet.google.com/example5"
     };
     
     function verifyUser() {
-      const mobile = document.getElementById("mobileNumber").value;
+      const email = document.getElementById("emailID").value.trim();
       const message = document.getElementById("message");
       
-      if (students[mobile]) {
+      if (students[email]) {
         document.getElementById("subjects").style.display = "block";
-        document.getElementById("userName").innerText = students[mobile];
+        document.getElementById("userName").innerText = students[email];
         message.innerText = "";
-      } else if (admins[mobile]) {
+      } else if (admins[email]) {
         document.getElementById("subjects").style.display = "block";
         document.getElementById("userName").innerText = "Admin";
         message.innerText = "";
       } else {
-        message.innerText = "Your mobile number is not registered. Please contact admin.";
+        message.innerText = "Your Email ID is not registered. Please contact admin.";
       }
     }
     
