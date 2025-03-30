@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPAT Gyan Class Management System</title>
+  <title>GPAT Gyan | CMS</title>
   <style>
     body {
       font-family: 'Times New Roman', serif;
@@ -16,7 +16,7 @@
     .container {
       max-width: 600px;
       margin: auto;
-      background:  #FFF5E1;
+      background: #FFF5E1;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
@@ -87,11 +87,26 @@
       background-color: #B22222;
       transform: scale(1.05);
     }
+    /* Footer */
+    .footer {
+      background-color:#FFF5E1;
+      color: rgb(140, 7, 7);
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 20px;
+      border-top: 2px solid white;
+    }
+    .footer a {
+      color: #85d5f2;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <img src="logo.png" alt="GPAT Gyan Logo" class="logo">
-  <h1>Class Management System</h1>
+  <h1>Class Management System (CMS)</h1>
   <div class="container">
     <h3>Enter The Registered Email ID (Admin / Student)</h3>
     <input type="text" id="emailID" placeholder="Enter Email ID">
@@ -99,11 +114,13 @@
     <p id="message"></p>
     <div id="subjects" style="display: none;">
       <h3 class="welcome-message">Welcome, <span id="userName"></span></h3>
-      <button class="subject-button" onclick="joinClass('Pharmaceutics')">Pharmaceutics</button>
-      <button class="subject-button" onclick="joinClass('Pharmacology')">Pharmacology</button>
-      <button class="subject-button" onclick="joinClass('Pharmaceutical Chemistry')">Pharmaceutical Chemistry</button>
-      <button class="subject-button" onclick="joinClass('Pharmacognosy')">Pharmacognosy</button>
-      <button class="subject-button" onclick="joinClass('Allied Subjects')">Allied Subjects</button>
+      <button class="subject-button" onclick="joinClass('Arijit')">Arijit</button>
+      <button class="subject-button" onclick="joinClass('Chyan')">Chyan</button>
+      <button class="subject-button" onclick="joinClass('Indrajit')">Indrajit</button>
+      <button class="subject-button" onclick="joinClass('Shreyashi')">Shreyashi</button>
+      <button class="subject-button" onclick="joinClass('Souvik')">Souvik</button>
+      <button class="subject-button" onclick="joinClass('Sekhar')">Sekhar</button>
+      <button class="subject-button" onclick="joinClass('Akash')">Akash</button>
     </div>
   </div>
   <script>
@@ -116,11 +133,13 @@
     };
     
     const meetLinks = {
-      "Pharmaceutics": "https://meet.google.com/example1",
-      "Pharmacology": "https://meet.google.com/example2",
-      "Pharmaceutical Chemistry": "https://meet.google.com/example3",
-      "Pharmacognosy": "https://meet.google.com/example4",
-      "Allied Subjects": "https://meet.google.com/example5"
+      "Arijit": "https://meet.google.com/example1",
+      "Chyan": "https://meet.google.com/example2",
+      "Indrajit": "https://meet.google.com/example3",
+      "Shreyashi": "https://meet.google.com/example4",
+      "Souvik": "https://meet.google.com/example5",
+      "Sekhar": "https://meet.google.com/example6",
+      "Akash": "https://meet.google.com/example7"
     };
     
     function verifyUser() {
@@ -144,5 +163,8 @@
       window.location.href = meetLinks[subject] || "#";
     }
   </script>
+  <footer class="footer">
+    <p><b>CMS is owned and administered by GPAT Gyan</b></p>
+  </footer>
 </body>
 </html>
