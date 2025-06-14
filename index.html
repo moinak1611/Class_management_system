@@ -1,130 +1,626 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPAT Gyan | CMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Times New Roman', serif;
-      background-color: #f8eded;
-      color: #333;
-      text-align: center;
-      padding: 20px;
+    :root {
+      --primary: #e9a38c;
+      --secondary: #B22222;
+      --accent: #e9f3ec;
+      --dark: #050d28;
+      --light: #FFF5E1;
+      --highlight: #FFD700;
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: #FFF5E1;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-    }
-    h1, h3 {
-      color: #8B0000;
-      margin-bottom: 20px;
-    }
-    .subject-button {
-      display: block;
+
+    html, body {
+      height: 100%;
       width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      background-color: #B22222;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      overflow: hidden;
     }
-    .subject-button:hover {
-      background-color: #8B0000;
-      transform: scale(1.05);
+
+    body {
+      font-family: "font-family: 'Times New Roman', Times, serif";
+      background-color: var(--dark);
+      color: var(--light);
+      position: relative;
+      overflow-y: hidden;
+      touch-action: none;
+      -webkit-overflow-scrolling: touch;
     }
-    input {
-      width: calc(100% - 30px);
-      padding: 12px;
-      margin: 10px 0;
-      border: 2px solid #8B0000;
-      border-radius: 6px;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
+
+    /* Cyber Grid Background */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(139, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 0, 0, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -2;
+      animation: gridMove 100s linear infinite;
     }
-    input:focus {
-      border-color: #FF4500;
-      outline: none;
+
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
     }
-    #message {
-      color: red;
-      margin-top: 10px;
-      font-size: 16px;
+
+    /* Main Container */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Header Section */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
     .logo {
-      width: 130px;
-      height: 130px;
-      padding: 3px;
-      margin-bottom: 20px;
+      height: 150px;
+      width: 150px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+      animation: pulseGlow 3s ease-in-out infinite alternate;
     }
-    .welcome-message {
-      font-size: 22px;
-      color: #8B0000;
-      margin-bottom: 20px;
+
+    @keyframes pulseGlow {
+      0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+      100% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9)); }
     }
-    button {
+
+    .title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      background-color: #8B0000;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: titleUnderline 2s ease-in-out forwards;
+    }
+
+    @keyframes titleUnderline {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+
+    /* Content Area */
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      position: relative;
+      z-index: 5;
+      overflow: hidden;
+    }
+
+    /* Login Section */
+    .login-section {
+      width: 100%;
+      max-width: 500px;
+      padding: 2rem;
+      background: rgba(10, 10, 10, 0.8);
+      border: 1px solid rgba(139, 0, 0, 0.5);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(139, 0, 0, 0.3),
+                  inset 0 0 10px rgba(255, 69, 0, 0.2);
+      backdrop-filter: blur(10px);
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+      transition: all 0.5s ease;
+    }
+
+    .login-section:hover {
+      box-shadow: 0 0 40px rgba(139, 0, 0, 0.5),
+                  inset 0 0 15px rgba(255, 69, 0, 0.3);
+      transform: perspective(1000px) rotateY(5deg);
+    }
+
+    .input-group {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      color: var(--light);
+      font-size: 1.1rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+    }
+
+    .input-label {
+      position: absolute;
+      left: 1.5rem;
+      top: -0.8rem;
+      background: var(--dark);
+      padding: 0 0.5rem;
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 18px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5);
+      z-index: 1;
     }
-    button:hover {
-      background-color: #B22222;
-      transform: scale(1.05);
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      transition: all 0.4s ease;
+      z-index: -1;
     }
+
+    .submit-btn:hover::before {
+      left: 0;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .message {
+      margin: 1rem 0;
+      padding: 0.8rem;
+      border-radius: 5px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+
+    .error {
+      background: rgba(178, 34, 34, 0.2);
+      border-left: 3px solid var(--secondary);
+      color: var(--light);
+      display: block;
+    }
+
+    /* Teacher Selection Section */
+    .teacher-section {
+      width: 100%;
+      max-width: 800px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.5s ease forwards;
+      overflow-y: auto;
+      max-height: 70vh;
+      padding: 1rem;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .teacher-section::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .welcome-message {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .welcome-message span {
+      color: var(--highlight);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .welcome-message::after {
+      content: '';
+      display: block;
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 1rem auto;
+      border-radius: 3px;
+    }
+
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .teacher-card {
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(139, 0, 0, 0.3);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+    }
+
+    .teacher-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(255, 69, 0, 0.1));
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+
+    .teacher-card:hover {
+      transform: perspective(1000px) translateY(-10px) rotateX(5deg);
+      box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
+      border-color: var(--accent);
+    }
+
+    .teacher-card:hover::before {
+      transform: translateY(0);
+    }
+
+    .teacher-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .teacher-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+      letter-spacing: 1px;
+    }
+
+    .teacher-subject {
+      font-size: 0.9rem;
+      color: rgba(255, 245, 225, 0.7);
+      font-weight: 500;
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 69, 0, 0.5);
+      border-radius: 50%;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+    }
+
+    /* Cyber Lines Animation */
+    .cyber-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: cyberLine 3s linear infinite;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    @keyframes cyberLine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
     /* Footer */
     .footer {
-      background-color:#FFF5E1;
-      color: rgb(140, 7, 7);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
       text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      margin-top: 20px;
-      border-top: 2px solid white;
+      background: rgba(10, 10, 10, 0.8);
+      border-top: 1px solid rgba(139, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 100;
     }
-    .footer a {
-      color: #85d5f2;
-      text-decoration: none;
-      font-weight: bold;
+
+    .footer p {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--highlight);
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 1rem;
+      }
+
+      .title {
+        font-size: 1.8rem;
+      }
+
+      .logo {
+        height: 60px;
+        width: 60px;
+      }
+
+      .teacher-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .welcome-message {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .teacher-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer p {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="GPAT Gyan Logo" class="logo">
-  <h1>Class Management System (CMS)</h1>
-  <div class="container">
-    <h3>Enter The Registered Email ID (Admin / Student)</h3>
-    <input type="text" id="emailID" placeholder="Enter Email ID">
-    <button onclick="verifyUser()">Submit</button>
-    <p id="message"></p>
-    <div id="subjects" style="display: none;">
-      <h3 class="welcome-message">Welcome, <span id="userName"></span></h3>
-      <button class="subject-button" onclick="joinClass('Arijit')">Arijit</button>
-      <button class="subject-button" onclick="joinClass('Chyan')">Chyan</button>
-      <button class="subject-button" onclick="joinClass('Indrajit')">Indrajit</button>
-      <button class="subject-button" onclick="joinClass('Shreyashi')">Shreyashi</button>
-      <button class="subject-button" onclick="joinClass('Souvik')">Souvik</button>
-      <button class="subject-button" onclick="joinClass('Sekhar')">Sekhar</button>
-      <button class="subject-button" onclick="joinClass('Akash')">Akash</button>
+  <!-- Cyber Grid Background -->
+  <div class="cyber-grid"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Cyber Lines -->
+  <div id="cyber-lines"></div>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Header -->
+    <div class="header">
+      <img src="logo.png" alt="GPAT Gyan Logo" class="logo">
+      <h1 class="title">Class Management System (CMS)</h1>
+      <div style="width: 80px;"></div> <!-- Spacer for balance -->
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Login Section -->
+      <div class="login-section" id="loginSection">
+        <div class="input-group">
+          <label class="input-label">Enter Registered Email ID</label>
+          <input type="text" id="emailID" class="input-field" placeholder="admin@example.com">
+        </div>
+        <button class="submit-btn" onclick="verifyUser()">
+          <i class="fas fa-terminal"></i> submit
+        </button>
+        <div id="message" class="message"></div>
+      </div>
+
+      <!-- Teacher Selection Section -->
+      <div class="teacher-section" id="teacherSection">
+        <h2 class="welcome-message">Welcome, <span id="userName"></span></h2>
+        <div class="teacher-grid">
+          <div class="teacher-card" onclick="joinClass('Arijit')">
+            <i class="fas fa-prescription-bottle-alt teacher-icon"></i>
+            <h3 class="teacher-name">Arijit Bhowmik</h3>
+            <p class="teacher-subject">Pharmaceutics</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Chyan')">
+            <i class="fas fa-book teacher-icon"></i>
+            <h3 class="teacher-name">Chyan Dey</h3>
+            <p class="teacher-subject">Pharmaceutics</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Indrajit')">
+            <i class="fas fa-heartbeat teacher-icon"></i>
+            <h3 class="teacher-name">Indrajit Laha</h3>
+            <p class="teacher-subject">Pharmacology</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Shreyashi')">
+            <i class="fas fa-microscope  teacher-icon"></i>
+            <h3 class="teacher-name">Shreyashi Banerjee</h3>
+            <p class="teacher-subject">Pharmacognosy</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Souvik')">
+            <i class="fas fa-flask teacher-icon"></i>
+            <h3 class="teacher-name">Souvik Dey</h3>
+            <p class="teacher-subject">Pharmaceutical Chemistry</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Sekhar')">
+            <i class="fas fa-dna teacher-icon"></i>
+            <h3 class="teacher-name">Sekhar Samanta</h3>
+            <p class="teacher-subject">Pharmacology</p>
+          </div>
+          <div class="teacher-card" onclick="joinClass('Akash')">
+            <i class="fas fa-atom teacher-icon"></i>
+            <h3 class="teacher-name">Akash Chandra</h3>
+            <p class="teacher-subject">Pharmaceutical Chemistry</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>CMS is owned and administered by @GPAT_Gyan</p>
+  </div>
+
   <script>
+    // Prevent scrolling on the page
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+
+    // Create floating particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = Math.floor(window.innerWidth / 20);
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 4 + 1;
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 10;
+        const opacity = Math.random() * 0.5 + 0.1;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        particle.style.animationDuration = `${duration}s`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.opacity = opacity;
+        
+        // Random color variation
+        const hue = Math.floor(Math.random() * 20) + 350; // Red spectrum
+        particle.style.backgroundColor = `hsla(${hue}, 100%, 50%, ${opacity})`;
+        
+        container.appendChild(particle);
+      }
+    }
+    
+    // Create cyber lines
+    function createCyberLines() {
+      const container = document.getElementById('cyber-lines');
+      const lineCount = 5;
+      
+      for (let i = 0; i < lineCount; i++) {
+        const line = document.createElement('div');
+        line.classList.add('cyber-line');
+        
+        // Random properties
+        const width = Math.random() * 200 + 100;
+        const top = Math.random() * 100;
+        const duration = Math.random() * 5 + 3;
+        const delay = Math.random() * 5;
+        
+        line.style.width = `${width}px`;
+        line.style.top = `${top}vh`;
+        line.style.animationDuration = `${duration}s`;
+        line.style.animationDelay = `${delay}s`;
+        
+        container.appendChild(line);
+      }
+    }
+    
+    // Initialize animations
+    window.addEventListener('load', () => {
+      createParticles();
+      createCyberLines();
+    });
+    
+    // User database
     const students = {
       "akashchandra1611@gmail.com": "Akash Chandra",
       "upen978kumar983@gmail.com": "Upendra Kumar",
@@ -139,8 +635,6 @@
       "rahimamallick1@gmail.com": "Rahima Mallick",
       "kushbu1412@gmail.com": "Kushabu",
       "syedzeriff14@gmail.com": "M.Syed Mohamed Zeriff",
-
-
     };
     
     const admins = {
@@ -163,29 +657,128 @@
       "Akash": "https://meet.google.com/ghy-tjop-fdk",
     };
     
+    // Verify user function
     function verifyUser() {
       const email = document.getElementById("emailID").value.trim();
       const message = document.getElementById("message");
       
-      if (students[email]) {
-        document.getElementById("subjects").style.display = "block";
-        document.getElementById("userName").innerText = students[email];
-        message.innerText = "";
-      } else if (admins[email]) {
-        document.getElementById("subjects").style.display = "block";
-        document.getElementById("userName").innerText = "Admin";
-        message.innerText = "";
+      // Clear previous message
+      message.className = "";
+      message.textContent = "";
+      
+      if (!email) {
+        message.textContent = "Please enter your email address";
+        message.className = "error";
+        return;
+      }
+      
+      // Simple email validation
+      if (!email.includes("@") || !email.includes(".")) {
+        message.textContent = "Please enter a valid email address";
+        message.className = "error";
+        return;
+      }
+      
+      if (students[email] || admins[email]) {
+        // Animate login section out
+        document.getElementById("loginSection").style.opacity = "0";
+        document.getElementById("loginSection").style.transform = "translateY(-20px)";
+        
+        // Set user name
+        document.getElementById("userName").textContent = students[email] || `Admin: ${admins[email]}`;
+        
+        // Show teacher section after delay
+        setTimeout(() => {
+          document.getElementById("loginSection").style.display = "none";
+          document.getElementById("teacherSection").style.display = "flex";
+          
+          // Animate teacher cards in sequence
+          const cards = document.querySelectorAll('.teacher-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "perspective(1000px) translateY(0) rotateX(0)";
+            }, index * 100);
+          });
+        }, 300);
       } else {
-        message.innerText = "Your Email ID is not registered. Please contact admin.";
+        message.textContent = "Email ID not registered. Please contact admin!";
+        message.className = "error";
+        
+        // Shake animation for error
+        document.getElementById("loginSection").style.animation = "shake 0.5s";
+        setTimeout(() => {
+          document.getElementById("loginSection").style.animation = "";
+        }, 500);
       }
     }
     
-    function joinClass(subject) {
-      window.location.href = meetLinks[subject] || "#";
+    // Join class function with enhanced animation
+    function joinClass(teacher) {
+      const card = event.currentTarget;
+      
+      // Create ripple effect
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.width = '10px';
+      ripple.style.height = '10px';
+      ripple.style.backgroundColor = 'rgba(255, 215, 0, 0.5)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+      ripple.style.animation = 'ripple 0.6s linear';
+      ripple.style.top = `${event.offsetY}px`;
+      ripple.style.left = `${event.offsetX}px`;
+      
+      card.appendChild(ripple);
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+      
+      // Animate card selection
+      card.style.transform = "perspective(1000px) translateY(-10px) rotateX(10deg) scale(1.05)";
+      card.style.boxShadow = "0 20px 30px rgba(255, 69, 0, 0.6)";
+      card.style.borderColor = "var(--highlight)";
+      
+      // Dim other cards
+      document.querySelectorAll('.teacher-card').forEach(otherCard => {
+        if (otherCard !== card) {
+          otherCard.style.opacity = "0.3";
+          otherCard.style.transform = "perspective(1000px) scale(0.95)";
+        }
+      });
+      
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = meetLinks[teacher] || "#";
+      }, 500);
     }
+    
+    // Add keypress event for Enter key
+    document.getElementById("emailID").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        verifyUser();
+      }
+    });
+    
+    // Add shake animation for errors
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+      @keyframes ripple {
+        to {
+          transform: translate(-50%, -50%) scale(15);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
-  <footer class="footer">
-    <p><b>CMS is owned and administered by @GPAT_Gyan</b></p>
-  </footer>
 </body>
 </html>
