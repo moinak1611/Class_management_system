@@ -13,7 +13,7 @@
       --accent: #e9f3ec;
       --dark: #270202;
       --light: #FFF5E1;
-      --highlight: #FFD700;
+      --highlight: #ecdd16;
     }
 
     * {
@@ -25,17 +25,17 @@
     html, body {
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      font-size: 16px;
     }
 
     body {
       font-family: "font-family: 'Times New Roman', Times, serif";
       background-color: var(--dark);
       color: var(--light);
-      position: relative;
-      overflow-y: hidden;
-      touch-action: none;
-      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* Cyber Grid Background */
@@ -60,13 +60,14 @@
 
     /* Main Container */
     .main-container {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      width: 100vw;
-      padding: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
       position: relative;
-      overflow: hidden;
     }
 
     /* Header Section */
@@ -77,6 +78,7 @@
       padding: 1rem 0;
       position: relative;
       z-index: 10;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -94,34 +96,37 @@
 
     .title {
       font-family: 'Orbitron', sans-serif;
-      font-weight: 1000;
-      font-size: 1.5rem;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       text-transform: uppercase;
       background: linear-gradient(90deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
       position: relative;
+      text-align: center;
+      flex: 1;
+      margin: 0 1rem;
     }
 
     .title::after {
       content: '';
       position: absolute;
       bottom: -10px;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
       height: 3px;
       background: linear-gradient(90deg, var(--primary), var(--accent));
-      transform: scaleX(0);
-      transform-origin: left;
+      transform-origin: center;
       animation: titleUnderline 2s ease-in-out forwards;
     }
 
     @keyframes titleUnderline {
-      0% { transform: scaleX(0); }
-      100% { transform: scaleX(1); }
+      0% { transform: translateX(-50%) scaleX(0); }
+      100% { transform: translateX(-50%) scaleX(1); }
     }
 
     /* Content Area */
@@ -130,10 +135,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-grow: 1;
+      width: 100%;
       position: relative;
       z-index: 5;
-      overflow: hidden;
+      margin: 1rem 0;
     }
 
     /* Login Section */
@@ -152,12 +157,6 @@
       transition: all 0.5s ease;
     }
 
-    .login-section:hover {
-      box-shadow: 0 0 40px rgba(139, 0, 0, 0.5),
-                  inset 0 0 15px rgba(255, 69, 0, 0.3);
-      transform: perspective(1000px) rotateY(5deg);
-    }
-
     .input-group {
       position: relative;
       margin: 2rem 0;
@@ -170,7 +169,7 @@
       border: 1px solid var(--primary);
       border-radius: 8px;
       color: var(--light);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: 'Rajdhani', sans-serif;
       font-weight: 600;
       letter-spacing: 1px;
@@ -203,7 +202,7 @@
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -212,23 +211,6 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .submit-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-      transition: all 0.4s ease;
-      z-index: -1;
-    }
-
-    .submit-btn:hover::before {
-      left: 0;
     }
 
     .submit-btn:hover {
@@ -259,19 +241,11 @@
     /* Teacher Selection Section */
     .teacher-section {
       width: 100%;
-      max-width: 800px;
+      max-width: 1000px;
       display: none;
       flex-direction: column;
       align-items: center;
       animation: fadeIn 0.5s ease forwards;
-      overflow-y: auto;
-      max-height: 70vh;
-      padding: 1rem;
-      scrollbar-width: none; /* Firefox */
-    }
-
-    .teacher-section::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
     }
 
     @keyframes fadeIn {
@@ -280,12 +254,13 @@
     }
 
     .welcome-message {
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin: 1rem 0 2rem;
       text-align: center;
       position: relative;
       font-weight: 700;
       letter-spacing: 1px;
+      width: 100%;
     }
 
     .welcome-message span {
@@ -305,10 +280,10 @@
 
     .teacher-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       width: 100%;
-      margin-top: 2rem;
+      padding: 1rem;
     }
 
     .teacher-card {
@@ -322,42 +297,27 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transform-style: preserve-3d;
-      transform: perspective(1000px);
-    }
-
-    .teacher-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(139, 0, 0, 0.1), rgba(255, 69, 0, 0.1));
-      transform: translateY(100%);
-      transition: transform 0.4s ease;
-      z-index: -1;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .teacher-card:hover {
-      transform: perspective(1000px) translateY(-10px) rotateX(5deg);
+      transform: translateY(-5px);
       box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
       border-color: var(--accent);
     }
 
-    .teacher-card:hover::before {
-      transform: translateY(0);
-    }
-
     .teacher-icon {
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--highlight);
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
     .teacher-name {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       color: var(--light);
@@ -370,57 +330,14 @@
       font-weight: 500;
     }
 
-    /* Floating Particles */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .particle {
-      position: absolute;
-      background: rgba(255, 69, 0, 0.5);
-      border-radius: 50%;
-      animation: float linear infinite;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-    }
-
-    /* Cyber Lines Animation */
-    .cyber-line {
-      position: absolute;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      animation: cyberLine 3s linear infinite;
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    @keyframes cyberLine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
     /* Footer */
     .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
       width: 100%;
-      padding: 1rem;
+      padding: 1.5rem;
       text-align: center;
-      background: rgba(10, 10, 10, 0.8);
+      background: rgb(139, 66, 66);
       border-top: 1px solid rgba(139, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      z-index: 100;
+      margin-top: auto;
     }
 
     .footer p {
@@ -428,44 +345,51 @@
       font-weight: 500;
       letter-spacing: 1px;
       color: var(--highlight);
-      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+      text-shadow: 0 0 5px rgba(103, 9, 9, 0.886);
+      font-size: clamp(0.8rem, 2vw, 1rem);
     }
 
-    /* Responsive Design */
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
-      .main-container {
-        padding: 1rem;
+      .header {
+        flex-direction: column;
+        gap: 1rem;
       }
-
-      .title {
-        font-size: 1.8rem;
-      }
-
+      
       .logo {
         height: 60px;
         width: 60px;
       }
-
-      .teacher-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      
+      .login-section {
+        padding: 1.5rem;
       }
-
-      .welcome-message {
-        font-size: 1.5rem;
+      
+      .teacher-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       }
     }
 
     @media (max-width: 480px) {
-      .title {
-        font-size: 1.5rem;
+      .main-container {
+        padding: 1rem;
       }
-
+      
+      .login-section {
+        padding: 1rem;
+      }
+      
       .teacher-grid {
         grid-template-columns: 1fr;
       }
       
-      .footer p {
-        font-size: 0.9rem;
+      .input-field {
+        padding: 0.8rem 1.2rem;
+      }
+      
+      .submit-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -474,19 +398,12 @@
   <!-- Cyber Grid Background -->
   <div class="cyber-grid"></div>
 
-  <!-- Floating Particles -->
-  <div class="particles" id="particles"></div>
-
-  <!-- Cyber Lines -->
-  <div id="cyber-lines"></div>
-
   <!-- Main Container -->
   <div class="main-container">
     <!-- Header -->
     <div class="header">
       <img src="logo.png" alt="GPAT Gyan Logo" class="logo">
       <h1 class="title">Class Management System (CMS)</h1>
-      <div style="width: 80px;"></div> <!-- Spacer for balance -->
     </div>
 
     <!-- Content Area -->
@@ -498,7 +415,7 @@
           <input type="text" id="emailID" class="input-field" placeholder="xyz@gmail.com">
         </div>
         <button class="submit-btn" onclick="verifyUser()">
-          <i class="fas fa-terminal"></i> submit
+          <i class="fas fa-terminal"></i>Submit
         </button>
         <div id="message" class="message"></div>
       </div>
@@ -545,81 +462,14 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>CMS is owned and administered by @GPAT_Gyan</p>
+    <!-- Footer -->
+    <div class="footer">
+      <p>CMS is owned and administered by @GPAT_Gyan</p>
+    </div>
   </div>
 
   <script>
-    // Prevent scrolling on the page
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('touchmove', function(e) {
-      e.preventDefault();
-    }, { passive: false });
-
-    // Create floating particles
-    function createParticles() {
-      const container = document.getElementById('particles');
-      const particleCount = Math.floor(window.innerWidth / 20);
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random properties
-        const size = Math.random() * 4 + 1;
-        const duration = Math.random() * 20 + 10;
-        const delay = Math.random() * 10;
-        const opacity = Math.random() * 0.5 + 0.1;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.top = `${Math.random() * 100}vh`;
-        particle.style.animationDuration = `${duration}s`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.opacity = opacity;
-        
-        // Random color variation
-        const hue = Math.floor(Math.random() * 20) + 350; // Red spectrum
-        particle.style.backgroundColor = `hsla(${hue}, 100%, 50%, ${opacity})`;
-        
-        container.appendChild(particle);
-      }
-    }
-    
-    // Create cyber lines
-    function createCyberLines() {
-      const container = document.getElementById('cyber-lines');
-      const lineCount = 5;
-      
-      for (let i = 0; i < lineCount; i++) {
-        const line = document.createElement('div');
-        line.classList.add('cyber-line');
-        
-        // Random properties
-        const width = Math.random() * 200 + 100;
-        const top = Math.random() * 100;
-        const duration = Math.random() * 5 + 3;
-        const delay = Math.random() * 5;
-        
-        line.style.width = `${width}px`;
-        line.style.top = `${top}vh`;
-        line.style.animationDuration = `${duration}s`;
-        line.style.animationDelay = `${delay}s`;
-        
-        container.appendChild(line);
-      }
-    }
-    
-    // Initialize animations
-    window.addEventListener('load', () => {
-      createParticles();
-      createCyberLines();
-    });
-    
     // User database
     const students = {
       "akashchandra1611@gmail.com": "Akash Chandra",
@@ -691,69 +541,27 @@
         setTimeout(() => {
           document.getElementById("loginSection").style.display = "none";
           document.getElementById("teacherSection").style.display = "flex";
-          
-          // Animate teacher cards in sequence
-          const cards = document.querySelectorAll('.teacher-card');
-          cards.forEach((card, index) => {
-            setTimeout(() => {
-              card.style.opacity = "1";
-              card.style.transform = "perspective(1000px) translateY(0) rotateX(0)";
-            }, index * 100);
-          });
         }, 300);
       } else {
-        message.textContent = "Email ID not registered. Please contact admin!";
+        message.textContent = "Email not registered. Please contact admin!.";
         message.className = "error";
-        
-        // Shake animation for error
-        document.getElementById("loginSection").style.animation = "shake 0.5s";
-        setTimeout(() => {
-          document.getElementById("loginSection").style.animation = "";
-        }, 500);
       }
     }
     
-    // Join class function with enhanced animation
+    // Join class function
     function joinClass(teacher) {
       const card = event.currentTarget;
       
-      // Create ripple effect
-      const ripple = document.createElement('div');
-      ripple.style.position = 'absolute';
-      ripple.style.width = '10px';
-      ripple.style.height = '10px';
-      ripple.style.backgroundColor = 'rgba(255, 215, 0, 0.5)';
-      ripple.style.borderRadius = '50%';
-      ripple.style.pointerEvents = 'none';
-      ripple.style.transform = 'translate(-50%, -50%) scale(0)';
-      ripple.style.animation = 'ripple 0.6s linear';
-      ripple.style.top = `${event.offsetY}px`;
-      ripple.style.left = `${event.offsetX}px`;
+      // Add active class
+      card.classList.add('active');
       
-      card.appendChild(ripple);
-      
-      // Remove ripple after animation
+      // Remove active class after animation
       setTimeout(() => {
-        ripple.remove();
-      }, 600);
-      
-      // Animate card selection
-      card.style.transform = "perspective(1000px) translateY(-10px) rotateX(10deg) scale(1.05)";
-      card.style.boxShadow = "0 20px 30px rgba(255, 69, 0, 0.6)";
-      card.style.borderColor = "var(--highlight)";
-      
-      // Dim other cards
-      document.querySelectorAll('.teacher-card').forEach(otherCard => {
-        if (otherCard !== card) {
-          otherCard.style.opacity = "0.3";
-          otherCard.style.transform = "perspective(1000px) scale(0.95)";
-        }
-      });
-      
-      // Redirect after delay
-      setTimeout(() => {
-        window.location.href = meetLinks[teacher] || "#";
+        card.classList.remove('active');
       }, 500);
+      
+      // Redirect
+      window.location.href = meetLinks[teacher] || "#";
     }
     
     // Add keypress event for Enter key
@@ -762,23 +570,6 @@
         verifyUser();
       }
     });
-    
-    // Add shake animation for errors
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
-      }
-      @keyframes ripple {
-        to {
-          transform: translate(-50%, -50%) scale(15);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
   </script>
 </body>
 </html>
