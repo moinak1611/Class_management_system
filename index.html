@@ -538,14 +538,14 @@
       message.textContent = "";
       
       if (!email) {
-        message.textContent = "Please enter your email address";
+        message.textContent = "Please Enter Your Registered Email ID";
         message.className = "error";
         return;
       }
       
       // Simple email validation
       if (!email.includes("@") || !email.includes(".")) {
-        message.textContent = "Please enter a valid email address";
+        message.textContent = "Please Enter a Valid Email ID";
         message.className = "error";
         return;
       }
@@ -564,7 +564,7 @@
           document.getElementById("teacherSection").style.display = "flex";
         }, 300);
       } else {
-        message.textContent = "Email not registered. Please contact admin!.";
+        message.textContent = "Email ID not Registered. Please Contact Admin";
         message.className = "error";
       }
     }
