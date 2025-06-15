@@ -141,20 +141,39 @@
       margin: 1rem 0;
     }
 
-    /* Login Section */
+    /* Login Section*/
     .login-section {
-      width: 100%;
+      width: 90%;
       max-width: 700px;
-      padding: 2rem;
+      padding: 2.5rem;
       background: rgba(10, 10, 10, 0.8);
       border: 1px solid rgba(139, 0, 0, 0.5);
       border-radius: 15px;
       box-shadow: 0 0 30px rgb(206, 206, 206),
                   inset 0 0 10px rgba(167, 167, 61, 0.813);
       backdrop-filter: blur(10px);
+      z-index: 10;
       transform-style: preserve-3d;
       transform: perspective(1000px);
       transition: all 0.5s ease;
+    }
+
+    .login-section:hover {
+      box-shadow: 0 0 50px rgba(139, 0, 0, 0.7),
+                  inset 0 0 20px rgba(255, 69, 0, 0.4);
+    }
+
+    .login-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
     }
 
     .input-group {
@@ -211,6 +230,7 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5);
+      margin-top: 1.5rem;
     }
 
     .submit-btn:hover {
@@ -237,6 +257,7 @@
       color: var(--light);
       display: block;
     }
+
 
     /* Teacher Selection Section */
     .teacher-section {
