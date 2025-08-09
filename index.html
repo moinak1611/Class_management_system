@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPAT Gyan | CMS</title>
+  <title>GPAT GYAN | CMS</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -53,9 +53,35 @@
       animation: gridMove 100s linear infinite;
     }
 
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(233, 163, 140, 0.5);
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: float linear infinite;
+    }
+
     @keyframes gridMove {
       0% { background-position: 0 0; }
       100% { background-position: 1000px 1000px; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(20vw); opacity: 0; }
     }
 
     /* Main Container */
@@ -86,12 +112,19 @@
       width: 150px;
       object-fit: contain;
       filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
-      animation: pulseGlow 3s ease-in-out infinite alternate;
+      animation: pulseGlow 3s ease-in-out infinite alternate, floatLogo 8s ease-in-out infinite;
+      transform-origin: center;
     }
 
     @keyframes pulseGlow {
-      0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
-      100% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9)); }
+      0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); transform: scale(1.05); }
+      100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); transform: scale(1); }
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
     }
 
     .title {
@@ -156,11 +189,18 @@
       transform-style: preserve-3d;
       transform: perspective(1000px);
       transition: all 0.5s ease;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .login-section:hover {
       box-shadow: 0 0 50px rgba(139, 0, 0, 0.7),
                   inset 0 0 20px rgba(255, 69, 0, 0.4);
+      transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
     }
 
     .login-title {
@@ -174,6 +214,7 @@
       background-clip: text;
       color: transparent;
       letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(233, 163, 140, 0.5);
     }
 
     .input-group {
@@ -200,6 +241,12 @@
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+      animation: inputPulse 1.5s infinite;
+    }
+
+    @keyframes inputPulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); }
     }
 
     .input-label {
@@ -212,6 +259,21 @@
       color: var(--accent);
       font-weight: 600;
       letter-spacing: 1px;
+      text-shadow: 0 0 5px rgba(233, 163, 140, 0.5);
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:placeholder-shown + .input-label {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .input-field:not(:placeholder-shown) + .input-label,
+    .input-field:focus + .input-label {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .submit-btn {
@@ -231,11 +293,28 @@
       overflow: hidden;
       box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5);
       margin-top: 1.5rem;
+      z-index: 1;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+      z-index: -1;
     }
 
     .submit-btn:hover {
       box-shadow: 0 8px 20px rgba(255, 69, 0, 0.6);
       transform: translateY(-3px);
+    }
+
+    .submit-btn:hover::before {
+      left: 100%;
     }
 
     .submit-btn:active {
@@ -249,6 +328,13 @@
       font-weight: 600;
       text-align: center;
       display: none;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
 
     .error {
@@ -257,7 +343,6 @@
       color: var(--light);
       display: block;
     }
-
 
     /* Teacher Selection Section */
     .teacher-section {
@@ -282,6 +367,13 @@
       font-weight: 700;
       letter-spacing: 1px;
       width: 100%;
+      text-shadow: 0 0 10px rgba(233, 163, 140, 0.5);
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 5px rgba(233, 163, 140, 0.5); }
+      to { text-shadow: 0 0 15px rgba(233, 163, 140, 0.8); }
     }
 
     .welcome-message span {
@@ -297,6 +389,12 @@
       background: linear-gradient(90deg, var(--primary), var(--accent));
       margin: 1rem auto;
       border-radius: 3px;
+      animation: linePulse 2s infinite alternate;
+    }
+
+    @keyframes linePulse {
+      from { width: 150px; opacity: 0.8; }
+      to { width: 200px; opacity: 1; }
     }
 
     .teacher-grid {
@@ -322,12 +420,39 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transform-style: preserve-3d;
+      transform: perspective(500px);
+    }
+
+    .teacher-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--highlight));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 14px;
     }
 
     .teacher-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) perspective(500px) rotateX(5deg) rotateY(5deg);
       box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
       border-color: var(--accent);
+    }
+
+    .teacher-card:hover::before {
+      opacity: 1;
+      animation: borderGlow 2s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% { filter: blur(5px); opacity: 0.7; }
+      50% { filter: blur(7px); opacity: 0.9; }
+      100% { filter: blur(5px); opacity: 0.7; }
     }
 
     .teacher-icon {
@@ -335,6 +460,12 @@
       margin-bottom: 1rem;
       color: var(--highlight);
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .teacher-card:hover .teacher-icon {
+      transform: scale(1.2) rotate(10deg);
+      color: var(--primary);
     }
 
     .teacher-name {
@@ -343,12 +474,23 @@
       margin-bottom: 0.5rem;
       color: var(--light);
       letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .teacher-card:hover .teacher-name {
+      color: var(--highlight);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
 
     .teacher-subject {
       font-size: 0.9rem;
       color: rgba(255, 245, 225, 0.7);
       font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .teacher-card:hover .teacher-subject {
+      color: var(--accent);
     }
 
     /* Footer */
@@ -359,6 +501,24 @@
       background: rgb(139, 66, 66);
       border-top: 1px solid rgba(139, 0, 0, 0.5);
       margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      animation: footerShine 3s infinite;
+    }
+
+    @keyframes footerShine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     .footer p {
@@ -368,6 +528,8 @@
       color: var(--highlight);
       text-shadow: 0 0 5px rgba(103, 9, 9, 0.886);
       font-size: clamp(0.8rem, 2vw, 1rem);
+      position: relative;
+      z-index: 1;
     }
 
     /* Responsive Adjustments */
@@ -418,6 +580,9 @@
 <body>
   <!-- Cyber Grid Background -->
   <div class="cyber-grid"></div>
+  
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
 
   <!-- Main Container -->
   <div class="main-container">
@@ -431,12 +596,13 @@
     <div class="content">
       <!-- Login Section -->
       <div class="login-section" id="loginSection">
+        <h2 class="login-title">GPAT GYAN</h2>
         <div class="input-group">
-          <label class="input-label">Enter Registered Email ID</label>
           <input type="text" id="emailID" class="input-field" placeholder="xyz@gmail.com">
+          <label class="input-label">Enter Registered Email ID</label>
         </div>
         <button class="submit-btn" onclick="verifyUser()">
-          <i class="fas fa-terminal"></i>Submit
+          <i class="fas fa-terminal"></i> Submit
         </button>
         <div id="message" class="message"></div>
       </div>
@@ -486,13 +652,44 @@
 
     <!-- Footer -->
     <div class="footer">
-      <p>CMS is owned and administered by @GPAT_Gyan</p>
+      <p>CMS is owned and administered by @GPAT_GYAN</p>
       <p>Developed & Managed by <b><a href="https://moinak1611.github.io/-akash_chandra/" target="_blank" style="color: #85d5f2; text-decoration: none;">Akash Chandra</a></b></p>
-    </div>
     </div>
   </div>
 
   <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 2px and 6px
+        const size = Math.random() * 4 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        
+        // Random animation duration between 10s and 30s
+        const duration = Math.random() * 20 + 10;
+        particle.style.animation = `float ${duration}s linear infinite`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Initialize particles on load
+    window.addEventListener('load', createParticles);
+
     // User database
     const students = {
       "akashchandra1611@gmail.com": "Akash Chandra",
@@ -533,7 +730,7 @@
       "indrajitlaha9564@gmail.com":"Indrajit",
       "banerjeeshreyashi05@gmail.com":"Shreyashi",
       "dsouvik167@gmail.com":"Souvik",
-      "xyz@gmail.com":"update! soon!",
+      "123@gmail.com":"update soon!",
       "sudeshnachandra2002@gmail.com": "Akash",
     };
     
@@ -559,6 +756,7 @@
       if (!email) {
         message.textContent = "Please Enter Your Registered Email ID";
         message.className = "error";
+        message.style.display = "block";
         return;
       }
       
@@ -566,25 +764,44 @@
       if (!email.includes("@") || !email.includes(".")) {
         message.textContent = "Please Enter a Valid Email ID";
         message.className = "error";
+        message.style.display = "block";
         return;
       }
       
       if (students[email] || admins[email]) {
         // Animate login section out
-        document.getElementById("loginSection").style.opacity = "0";
-        document.getElementById("loginSection").style.transform = "translateY(-20px)";
+        const loginSection = document.getElementById("loginSection");
+        loginSection.style.animation = "fadeOut 0.5s ease forwards";
+        
+        // Create custom fadeOut animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+          @keyframes fadeOut {
+            to { opacity: 0; transform: translateY(-20px) scale(0.9); }
+          }
+        `;
+        document.head.appendChild(style);
         
         // Set user name
         document.getElementById("userName").textContent = students[email] || `Admin: ${admins[email]}`;
         
         // Show teacher section after delay
         setTimeout(() => {
-          document.getElementById("loginSection").style.display = "none";
+          loginSection.style.display = "none";
           document.getElementById("teacherSection").style.display = "flex";
-        }, 300);
+          
+          // Animate teacher cards one by one
+          const cards = document.querySelectorAll('.teacher-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.animation = `fadeInUp 0.5s ease forwards ${index * 0.1}s`;
+            }, 50);
+          });
+        }, 500);
       } else {
         message.textContent = "Email ID not Registered. Please Contact Admin";
         message.className = "error";
+        message.style.display = "block";
       }
     }
     
@@ -592,16 +809,33 @@
     function joinClass(teacher) {
       const card = event.currentTarget;
       
+      // Add ripple effect
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple-effect');
+      card.appendChild(ripple);
+      
+      // Position ripple
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      
       // Add active class
       card.classList.add('active');
       
-      // Remove active class after animation
+      // Remove ripple after animation
       setTimeout(() => {
-        card.classList.remove('active');
-      }, 500);
+        ripple.remove();
+      }, 1000);
       
-      // Redirect
-      window.location.href = meetLinks[teacher] || "#";
+      // Redirect after delay
+      setTimeout(() => {
+        if (meetLinks[teacher]) {
+          window.location.href = meetLinks[teacher];
+        }
+      }, 500);
     }
     
     // Add keypress event for Enter key
@@ -610,6 +844,31 @@
         verifyUser();
       }
     });
+    
+    // Add ripple effect style
+    const rippleStyle = document.createElement('style');
+    rippleStyle.innerHTML = `
+      .ripple-effect {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(0);
+        animation: ripple 0.6s linear;
+        pointer-events: none;
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+      }
+      
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(rippleStyle);
   </script>
 </body>
 </html>
