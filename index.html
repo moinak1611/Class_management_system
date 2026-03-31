@@ -2,608 +2,744 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>GPAT GYAN | CMS</title>
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --crimson: #8B0000;
-      --deep-crimson: #5a0000;
-      --ember: #e9a38c;
-      --gold: #d4a843;
-      --bright-gold: #f5c842;
-      --ivory: #FFF5E1;
-      --ghost: rgba(255,245,225,0.07);
-      --glass: rgba(15,5,5,0.75);
-      --panel-live: linear-gradient(135deg, #8B0000 0%, #3d0000 60%, #1a0000 100%);
-      --panel-rec: linear-gradient(135deg, #1a2a4a 0%, #0d1a32 60%, #050d1a 100%);
-      --neon-red: 0 0 10px #ff2200, 0 0 30px #8B0000;
-      --neon-blue: 0 0 10px #0055ff, 0 0 30px #003399;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; width:100%; overflow-x:hidden; }
 
     body {
-      font-family: 'Exo 2', sans-serif;
+      font-family: 'Times New Roman', Times, serif;
       background: #0a0000;
-      color: var(--ivory);
+      color: #FFF5E1;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* === ANIMATED BG === */
+    /* === LUXURY ANIMATED BACKGROUND === */
     .bg-scene {
-      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
     }
+
     .bg-scene::before {
       content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 20% 30%, rgba(139,0,0,0.15) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(100,50,0,0.1) 0%, transparent 70%),
-        radial-gradient(ellipse 100% 80% at 50% 50%, rgba(5,0,0,1) 40%, transparent 100%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 30% 40%, rgba(139, 0, 0, 0.2) 0%, transparent 70%),
+                  radial-gradient(ellipse 70% 50% at 80% 70%, rgba(212, 168, 67, 0.08) 0%, transparent 80%),
+                  repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.4) 0px, rgba(0, 0, 0, 0.4) 2px, transparent 2px, transparent 8px);
     }
+
     .hex-grid {
-      position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(139,0,0,0.04) 30px, rgba(139,0,0,0.04) 31px),
-        repeating-linear-gradient(120deg, transparent, transparent 30px, rgba(139,0,0,0.04) 30px, rgba(139,0,0,0.04) 31px),
-        repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(139,0,0,0.04) 30px, rgba(139,0,0,0.04) 31px);
-      animation: hexDrift 40s linear infinite;
+      position: absolute;
+      inset: 0;
+      background-image: 
+        repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(139, 0, 0, 0.05) 40px, rgba(139, 0, 0, 0.05) 42px),
+        repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(139, 0, 0, 0.05) 40px, rgba(139, 0, 0, 0.05) 42px);
+      animation: slowDrift 60s linear infinite;
     }
-    @keyframes hexDrift {
+
+    @keyframes slowDrift {
       0% { background-position: 0 0; }
-      100% { background-position: 300px 300px; }
+      100% { background-position: 500px 500px; }
     }
+
     .orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(80px); opacity: 0.15;
-      animation: orbFloat 15s ease-in-out infinite alternate;
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.2;
+      animation: floatOrb 20s ease-in-out infinite alternate;
     }
-    .orb-1 { width:500px; height:500px; background:#8B0000; top:-150px; left:-150px; animation-duration:18s; }
-    .orb-2 { width:400px; height:400px; background:#5c3000; bottom:-100px; right:-100px; animation-duration:22s; animation-delay:3s; }
-    .orb-3 { width:300px; height:300px; background:#4a0000; top:40%; left:50%; animation-duration:25s; animation-delay:6s; }
-    @keyframes orbFloat {
-      0%   { transform: translate(0,0) scale(1); }
-      50%  { transform: translate(40px,60px) scale(1.1); }
-      100% { transform: translate(-30px,30px) scale(0.9); }
+
+    .orb-1 { width: 600px; height: 600px; background: #8B0000; top: -200px; left: -200px; }
+    .orb-2 { width: 500px; height: 500px; background: #d4a843; bottom: -150px; right: -150px; animation-duration: 25s; }
+    .orb-3 { width: 400px; height: 400px; background: #5a2a2a; top: 50%; left: 30%; animation-duration: 18s; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, 40px) scale(1.2); }
     }
-    /* Particles */
+
     .particle {
-      position: absolute; border-radius: 50%;
-      background: rgba(233,163,140,0.6);
-      filter: blur(1px);
-      animation: particleRise linear infinite;
-    }
-    @keyframes particleRise {
-      0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 0.8; }
-      100% { transform: translateY(-10vh) translateX(var(--drift,30px)); opacity: 0; }
+      position: absolute;
+      background: radial-gradient(circle, rgba(212, 168, 67, 0.6), transparent);
+      border-radius: 50%;
+      animation: floatParticle linear infinite;
     }
 
-    /* === LAYOUT === */
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.4; }
+      100% { transform: translateY(-20vh) translateX(50px) rotate(360deg); opacity: 0; }
+    }
+
+    /* === WRAPPER === */
     .wrapper {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 2;
       min-height: 100vh;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* === HEADER === */
+    /* === HEADER - Elegant === */
     .header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 2.5rem;
-      background: rgba(0,0,0,0.5);
-      border-bottom: 1px solid rgba(139,0,0,0.3);
-      backdrop-filter: blur(20px);
-      position: sticky; top: 0; z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3rem;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 168, 67, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .header-left { display: flex; align-items: center; gap: 1rem; }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
     .logo {
-      height: 60px; width: 60px; object-fit: contain;
-      filter: drop-shadow(0 0 12px rgba(212,168,67,0.8));
-      animation: logoPulse 3s ease-in-out infinite alternate;
+      height: 65px;
+      width: 65px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px rgba(212, 168, 67, 0.7));
+      transition: all 0.4s ease;
     }
-    @keyframes logoPulse {
-      0%   { filter: drop-shadow(0 0 6px rgba(212,168,67,0.5)) drop-shadow(0 0 15px rgba(139,0,0,0.3)); }
-      100% { filter: drop-shadow(0 0 18px rgba(212,168,67,0.9)) drop-shadow(0 0 30px rgba(139,0,0,0.6)); }
+
+    .logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 25px rgba(212, 168, 67, 0.9));
     }
-    .brand { display: flex; flex-direction: column; }
+
     .brand-name {
-      font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900;
-      background: linear-gradient(90deg, var(--gold), var(--ember), var(--bright-gold));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      letter-spacing: 3px; line-height: 1.2;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #d4a843, #f5c842, #e9a38c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
     }
+
     .brand-sub {
-      font-size: 0.65rem; letter-spacing: 4px; color: rgba(255,245,225,0.45);
-      text-transform: uppercase; font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: rgba(255, 245, 225, 0.5);
+      text-transform: uppercase;
+      font-family: 'Times New Roman', Times, serif;
     }
-    .header-center { flex:1; text-align: center; }
+
     .header-title {
-      font-family: 'Cinzel', serif; font-size: clamp(0.9rem, 2vw, 1.4rem);
-      font-weight: 700; color: rgba(255,245,225,0.8);
-      letter-spacing: 2px; text-transform: uppercase;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255, 245, 225, 0.7);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
     }
-    .header-right { min-width: 80px; }
+
     .user-badge {
-      display: none; align-items: center; gap: 0.5rem;
-      background: rgba(139,0,0,0.2); border: 1px solid rgba(139,0,0,0.4);
-      padding: 0.4rem 0.8rem; border-radius: 50px;
-      font-size: 0.8rem; font-weight: 600; color: var(--ember);
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(139, 0, 0, 0.3);
+      border: 1px solid rgba(212, 168, 67, 0.5);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: 600;
+      color: #e9a38c;
     }
-    .user-badge.visible { display: flex; }
+
+    .user-badge.visible {
+      display: flex;
+    }
+
     .status-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #00ff88;
-      box-shadow: 0 0 8px #00ff88;
-      animation: statusPulse 1.5s ease-in-out infinite;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #44ff44;
+      box-shadow: 0 0 8px #44ff44;
+      animation: pulseGreen 1.5s infinite;
     }
-    @keyframes statusPulse {
-      0%,100% { box-shadow: 0 0 4px #00ff88; }
-      50% { box-shadow: 0 0 12px #00ff88, 0 0 20px #00ff88; }
+
+    @keyframes pulseGreen {
+      0%, 100% { box-shadow: 0 0 4px #44ff44; }
+      50% { box-shadow: 0 0 16px #44ff44; }
     }
 
     /* === MAIN CONTENT === */
-    .main { flex:1; display:flex; flex-direction:column; align-items:center; padding: 3rem 1.5rem; }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
 
-    /* === LOGIN SECTION === */
+    /* === LOGIN SECTION - LARGER, CENTERED, ELEGANT === */
     #loginSection {
-      width: 100%; max-width: 520px;
-      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      width: 100%;
+      max-width: 620px;
+      margin: 2rem auto;
+      animation: fadeSlideUp 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
     }
-    @keyframes slideUp {
-      from { opacity:0; transform: translateY(50px) scale(0.95); }
-      to { opacity:1; transform: translateY(0) scale(1); }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     .login-card {
-      background: var(--glass);
-      border: 1px solid rgba(139,0,0,0.4);
-      border-radius: 20px;
-      padding: 3rem 2.5rem;
-      backdrop-filter: blur(30px);
-      box-shadow:
-        0 25px 60px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(212,168,67,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-      position: relative; overflow: hidden;
+      background: rgba(10, 5, 5, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 168, 67, 0.35);
+      border-radius: 32px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 168, 67, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      text-align: center;
+      transition: all 0.4s ease;
     }
-    .login-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0.6;
+
+    .login-card:hover {
+      border-color: rgba(212, 168, 67, 0.6);
+      box-shadow: 0 35px 70px rgba(139, 0, 0, 0.3);
     }
-    .login-card::after {
-      content: '';
-      position: absolute; inset: 0; border-radius: 20px;
-      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139,0,0,0.15) 0%, transparent 70%);
-      pointer-events: none;
+
+    .login-emblem-icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, #8B0000, #c0392b);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #d4a843;
+      border: 2px solid rgba(212, 168, 67, 0.5);
+      box-shadow: 0 0 40px rgba(139, 0, 0, 0.5);
+      animation: emblemGlow 2.5s infinite alternate;
     }
-    .login-emblem {
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+
+    @keyframes emblemGlow {
+      0% { box-shadow: 0 0 20px rgba(139, 0, 0, 0.4); }
+      100% { box-shadow: 0 0 50px rgba(212, 168, 67, 0.5), 0 0 30px rgba(139, 0, 0, 0.6); }
+    }
+
+    .login-title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF5E1, #e9a38c, #d4a843);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .login-subtitle {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.9rem;
+      color: rgba(255, 245, 225, 0.5);
+      letter-spacing: 2px;
       margin-bottom: 2rem;
     }
-    .login-emblem-icon {
-      width: 70px; height: 70px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--crimson), var(--deep-crimson));
-      border: 2px solid rgba(212,168,67,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; color: var(--gold);
-      box-shadow: 0 0 30px rgba(139,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-      animation: iconGlow 2s ease-in-out infinite alternate;
-    }
-    @keyframes iconGlow {
-      0% { box-shadow: 0 0 20px rgba(139,0,0,0.4); }
-      100% { box-shadow: 0 0 40px rgba(139,0,0,0.7), 0 0 60px rgba(212,168,67,0.2); }
-    }
-    .login-title {
-      font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 700;
-      background: linear-gradient(180deg, var(--ivory) 0%, var(--ember) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      letter-spacing: 2px; text-align: center;
-    }
-    .login-subtitle {
-      font-size: 0.8rem; color: rgba(255,245,225,0.4); letter-spacing: 3px;
-      text-transform: uppercase; text-align: center;
-    }
-    .field-group { margin: 2rem 0 1rem; position: relative; }
-    .field-label {
-      display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(212,168,67,0.7); margin-bottom: 0.6rem;
-    }
-    .field-wrap { position: relative; }
-    .field-icon {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: rgba(233,163,140,0.5); font-size: 0.9rem; pointer-events: none;
-      transition: color 0.3s;
-    }
-    .field-input {
-      width: 100%; padding: 0.9rem 1rem 0.9rem 2.8rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(139,0,0,0.4);
-      border-radius: 10px; color: var(--ivory);
-      font-family: 'Exo 2', sans-serif; font-size: 0.95rem; font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-    .field-input::placeholder { color: rgba(255,245,225,0.25); }
-    .field-input:focus {
-      outline: none;
-      border-color: var(--ember);
-      background: rgba(255,255,255,0.06);
-      box-shadow: 0 0 0 3px rgba(233,163,140,0.1), 0 0 20px rgba(139,0,0,0.3);
-    }
-    .field-input:focus ~ .field-icon { color: var(--ember); }
-    .login-btn {
-      width: 100%; padding: 1rem;
-      background: linear-gradient(135deg, var(--crimson), #c0392b, #6b0000);
-      color: var(--ivory); border: none; border-radius: 10px;
-      font-family: 'Exo 2', sans-serif; font-size: 1rem; font-weight: 700;
-      letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
-      position: relative; overflow: hidden;
-      box-shadow: 0 8px 25px rgba(139,0,0,0.4);
-      transition: all 0.3s ease;
-      margin-top: 1.5rem;
-    }
-    .login-btn::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 50%);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(139,0,0,0.6); }
-    .login-btn:hover::before { opacity: 1; }
-    .login-btn:active { transform: translateY(0); }
-    .btn-shimmer {
-      position: absolute; top: 0; left: -100%; width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      animation: shimmer 2.5s infinite;
-      pointer-events: none;
-    }
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 200%; }
-    }
-    .msg {
-      margin-top: 1rem; padding: 0.8rem 1rem;
-      border-radius: 8px; font-size: 0.88rem; font-weight: 600;
-      display: none; text-align: center; animation: msgShake 0.4s ease;
-    }
-    @keyframes msgShake {
-      0%,100% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      75% { transform: translateX(6px); }
-    }
-    .msg.error {
-      display: block;
-      background: rgba(139,0,0,0.2); border: 1px solid rgba(139,0,0,0.5);
-      color: #ff9999;
+
+    .field-group {
+      margin: 2rem 0 1.8rem;
+      text-align: left;
     }
 
-    /* === DASHBOARD SECTION === */
-    #dashSection { display:none; width:100%; max-width:1100px; }
+    .field-label {
+      display: block;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: rgba(212, 168, 67, 0.8);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(139, 0, 0, 0.4);
+      border-radius: 14px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1rem;
+      color: #FFF5E1;
+      transition: all 0.3s;
+    }
+
+    .field-input:focus {
+      outline: none;
+      border-color: #d4a843;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #8B0000, #aa2e1e);
+      border: none;
+      border-radius: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #FFF5E1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+    }
+
+    .login-btn:hover::before {
+      left: 100%;
+    }
+
+    .msg.error {
+      background: rgba(139, 0, 0, 0.2);
+      border: 1px solid rgba(139, 0, 0, 0.5);
+      color: #ffb3b3;
+      padding: 0.9rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+    }
+
+    /* === DASHBOARD === */
+    #dashSection {
+      display: none;
+      width: 100%;
+      max-width: 1300px;
+    }
+
     #dashSection.visible {
       display: block;
-      animation: dashIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation: fadeInUp 0.7s ease forwards;
     }
-    @keyframes dashIn {
-      from { opacity:0; transform: translateY(30px); }
-      to { opacity:1; transform: translateY(0); }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .welcome-banner {
-      text-align: center; margin-bottom: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
     }
-    .welcome-banner .greeting {
-      font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase;
-      color: rgba(255,245,225,0.4); margin-bottom: 0.5rem;
+
+    .greeting {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      color: rgba(255, 245, 225, 0.5);
+      text-transform: uppercase;
     }
-    .welcome-banner .uname {
-      font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.5rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, var(--ember), var(--gold), var(--bright-gold), var(--ember));
-      background-size: 200%;
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      animation: goldFlow 4s linear infinite;
+
+    .uname {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e9a38c, #d4a843, #f5c842);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0.5rem 0;
     }
-    @keyframes goldFlow {
-      0%   { background-position: 0%; }
-      100% { background-position: 200%; }
-    }
-    .welcome-banner .divider {
-      width: 100px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+
+    .divider {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4a843, transparent);
       margin: 1rem auto;
-      animation: dividerPulse 2s ease-in-out infinite alternate;
-    }
-    @keyframes dividerPulse { 0% { width:80px; } 100% { width:160px; } }
-    .welcome-banner .subtitle {
-      font-size: 0.9rem; color: rgba(255,245,225,0.5);
-      letter-spacing: 1px;
     }
 
-    /* === TEACHER SELECTOR === */
     .section-label {
-      font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: rgba(212,168,67,0.6); margin-bottom: 1rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .section-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(90deg, rgba(212,168,67,0.3), transparent);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: rgba(212, 168, 67, 0.7);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
     }
 
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent);
+    }
+
+    /* Teacher Grid */
     .teacher-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
     }
+
     .teacher-card {
-      background: var(--ghost);
-      border: 1px solid rgba(139,0,0,0.25);
-      border-radius: 14px; padding: 1.4rem 1.2rem;
-      cursor: pointer; text-align: center;
-      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
-      position: relative; overflow: hidden;
+      background: rgba(255, 245, 225, 0.05);
+      border: 1px solid rgba(139, 0, 0, 0.3);
+      border-radius: 20px;
+      padding: 1.6rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
     }
-    .teacher-card::before {
-      content: ''; position: absolute; inset: 0; border-radius: 14px;
-      background: linear-gradient(135deg, rgba(139,0,0,0.3) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.3s;
+
+    .teacher-card:hover {
+      transform: translateY(-8px);
+      border-color: #d4a843;
+      background: rgba(139, 0, 0, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
-    .teacher-card::after {
-      content: ''; position: absolute; top:0; left:0; right:0; height:1px;
-      background: linear-gradient(90deg, transparent, var(--ember), transparent);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .teacher-card:hover { transform: translateY(-5px) scale(1.02); border-color: var(--ember); }
-    .teacher-card:hover::before, .teacher-card:hover::after { opacity: 1; }
+
     .teacher-card.selected {
-      border-color: var(--gold) !important;
-      background: rgba(139,0,0,0.2) !important;
-      box-shadow: 0 0 25px rgba(139,0,0,0.4), 0 0 0 2px rgba(212,168,67,0.2);
+      border-color: #d4a843;
+      background: rgba(139, 0, 0, 0.25);
+      box-shadow: 0 0 30px rgba(212, 168, 67, 0.2);
     }
-    .teacher-card.selected::before { opacity:1; }
-    .teacher-card.selected::after { opacity:1; }
+
     .t-icon {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(139,0,0,0.3);
-      border: 1px solid rgba(212,168,67,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: var(--gold); margin: 0 auto 0.8rem;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      background: rgba(139, 0, 0, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #d4a843;
       transition: all 0.3s;
     }
-    .teacher-card:hover .t-icon, .teacher-card.selected .t-icon {
-      background: rgba(139,0,0,0.5);
-      border-color: var(--gold);
-      box-shadow: 0 0 15px rgba(212,168,67,0.3);
-      transform: scale(1.1);
-    }
-    .t-name {
-      font-weight: 700; font-size: 0.95rem; color: var(--ivory);
-      margin-bottom: 0.3rem; letter-spacing: 0.5px;
-      transition: color 0.3s;
-    }
-    .teacher-card:hover .t-name, .teacher-card.selected .t-name { color: var(--bright-gold); }
-    .t-subject {
-      font-size: 0.78rem; color: rgba(255,245,225,0.45);
-      font-weight: 400; letter-spacing: 0.5px;
-    }
-    .t-badge {
-      position: absolute; top: 0.6rem; right: 0.6rem;
-      width: 8px; height: 8px; border-radius: 50%; background: #00ff88;
-      box-shadow: 0 0 6px #00ff88;
-      animation: statusPulse 1.5s ease-in-out infinite;
-    }
-    .t-badge.offline { background: #666; box-shadow: none; animation: none; }
 
-    /* === TWO PANEL SECTION === */
-    .panels-wrapper {
-      opacity: 0; pointer-events: none;
-      transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
-      transform: translateY(20px);
+    .teacher-card:hover .t-icon {
+      transform: scale(1.1);
+      background: rgba(212, 168, 67, 0.2);
     }
+
+    .t-name {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFF5E1;
+      margin-bottom: 0.3rem;
+    }
+
+    .t-subject {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.85rem;
+      color: rgba(255, 245, 225, 0.5);
+    }
+
+    .t-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #44ff44;
+      box-shadow: 0 0 8px #44ff44;
+    }
+
+    /* Panels - 3 Column */
+    .panels-wrapper {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
     .panels-wrapper.active {
-      opacity: 1; pointer-events: all;
+      opacity: 1;
       transform: translateY(0);
     }
-    .panels-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
-    }
-    .selected-teacher-info {
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .sel-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--panel-live); border: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: var(--gold);
-    }
-    .sel-name { font-weight: 700; font-size: 1rem; color: var(--ivory); }
-    .sel-subject { font-size: 0.78rem; color: rgba(255,245,225,0.45); }
 
-    .two-panels {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+    .selected-teacher-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sel-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B0000, #5a0000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #d4a843;
+      border: 1px solid rgba(212, 168, 67, 0.5);
+    }
+
+    .sel-name {
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .three-panels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
     }
 
     .panel {
-      border-radius: 18px; overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+      transition: all 0.4s ease;
     }
-    .panel:hover { transform: translateY(-4px); }
+
+    .panel:hover {
+      transform: translateY(-6px);
+    }
 
     .panel-header {
       padding: 1.2rem 1.5rem;
-      display: flex; align-items: center; gap: 0.8rem;
-      position: relative; overflow: hidden;
-    }
-    .panel-header::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%);
-      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    /* LIVE panel */
-    .panel-live .panel-header {
-      background: linear-gradient(135deg, #6b0000 0%, #3d0000 100%);
-      border-bottom: 1px solid rgba(255,100,50,0.2);
-    }
-    .panel-live {
-      background: rgba(30,5,5,0.8);
-      border: 1px solid rgba(139,0,0,0.5);
-      box-shadow: 0 10px 40px rgba(139,0,0,0.2), 0 0 0 1px rgba(139,0,0,0.1);
-    }
-    .panel-live:hover {
-      box-shadow: 0 20px 60px rgba(139,0,0,0.35), 0 0 0 1px rgba(220,50,50,0.3);
-      border-color: rgba(220,80,80,0.6);
-    }
-
-    /* RECORDED panel */
-    .panel-rec .panel-header {
-      background: linear-gradient(135deg, #0d2a5c 0%, #071426 100%);
-      border-bottom: 1px solid rgba(50,100,255,0.2);
-    }
-    .panel-rec {
-      background: rgba(5,15,35,0.85);
-      border: 1px solid rgba(30,80,200,0.4);
-      box-shadow: 0 10px 40px rgba(0,30,100,0.2), 0 0 0 1px rgba(0,30,100,0.1);
-    }
-    .panel-rec:hover {
-      box-shadow: 0 20px 60px rgba(0,30,100,0.35), 0 0 0 1px rgba(50,100,255,0.3);
-      border-color: rgba(50,120,255,0.5);
-    }
+    .panel-live .panel-header { background: linear-gradient(135deg, #6b0000, #3a0000); }
+    .panel-live { background: rgba(30, 5, 5, 0.9); border: 1px solid rgba(139, 0, 0, 0.5); }
+    .panel-rec .panel-header { background: linear-gradient(135deg, #0a2a4a, #041a2a); }
+    .panel-rec { background: rgba(5, 15, 35, 0.9); border: 1px solid rgba(50, 100, 200, 0.4); }
+    .panel-notes .panel-header { background: linear-gradient(135deg, #2a6a2a, #1a4a1a); }
+    .panel-notes { background: rgba(10, 30, 10, 0.9); border: 1px solid rgba(80, 200, 80, 0.4); }
 
     .panel-icon-wrap {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
-      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
     }
-    .panel-live .panel-icon-wrap { background: rgba(255,50,50,0.2); color: #ff6b6b; }
-    .panel-rec .panel-icon-wrap { background: rgba(50,130,255,0.2); color: #82b4ff; }
 
-    .panel-title-area .panel-type-name {
-      font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .panel-live .panel-type-name { color: #ff9090; }
-    .panel-rec  .panel-type-name { color: #90b8ff; }
+    .panel-live .panel-icon-wrap { background: rgba(255, 80, 80, 0.2); color: #ff8080; }
+    .panel-rec .panel-icon-wrap { background: rgba(80, 130, 255, 0.2); color: #88aaff; }
+    .panel-notes .panel-icon-wrap { background: rgba(100, 255, 100, 0.2); color: #aaffaa; }
 
-    .panel-title-area .panel-desc {
-      font-size: 0.73rem; color: rgba(255,245,225,0.4);
-      letter-spacing: 1px; margin-top: 0.15rem;
+    .panel-type-name {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.2rem;
+      font-weight: 800;
     }
+
+    .panel-live .panel-type-name { color: #ffa0a0; }
+    .panel-rec .panel-type-name { color: #aac8ff; }
+    .panel-notes .panel-type-name { color: #ccffcc; }
+
+    .panel-desc {
+      font-size: 0.7rem;
+      color: rgba(255, 245, 225, 0.5);
+      font-family: 'Times New Roman', Times, serif;
+    }
+
     .live-indicator {
-      margin-left: auto; display: flex; align-items: center; gap: 0.4rem;
-      background: rgba(255,50,50,0.15); border: 1px solid rgba(255,50,50,0.3);
-      padding: 0.25rem 0.7rem; border-radius: 50px;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
-      color: #ff8080; text-transform: uppercase;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 50, 50, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: bold;
     }
-    .live-dot { width:7px; height:7px; border-radius:50%; background:#ff3333; animation: statusPulse 1s infinite; }
 
-    .panel-body { padding: 1.5rem; }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #ff4444;
+      border-radius: 50%;
+      animation: pulseRed 1s infinite;
+    }
 
-    /* CTA button in panel */
-    .panel-cta {
-      display: flex; align-items: center; justify-content: center; gap: 0.7rem;
-      width: 100%; padding: 1rem 1.5rem;
-      border-radius: 12px; border: none; cursor: pointer;
-      font-family: 'Exo 2', sans-serif; font-size: 1rem; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      text-decoration: none; position: relative; overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+    @keyframes pulseRed {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; transform: scale(1.2); }
     }
-    .panel-cta::before {
-      content: ''; position: absolute; top:0; left:-100%; width:60%; height:100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-      animation: shimmer 2s infinite;
-    }
-    .cta-live {
-      background: linear-gradient(135deg, #8B0000, #c0392b);
-      color: #fff;
-      box-shadow: 0 6px 25px rgba(139,0,0,0.5);
-    }
-    .cta-live:hover { box-shadow: 0 10px 40px rgba(220,50,50,0.6); transform: translateY(-2px); }
-    .cta-rec {
-      background: linear-gradient(135deg, #1a3a7c, #2255cc);
-      color: #fff;
-      box-shadow: 0 6px 25px rgba(30,80,200,0.4);
-    }
-    .cta-rec:hover { box-shadow: 0 10px 40px rgba(50,100,255,0.6); transform: translateY(-2px); }
-    .cta-disabled {
-      background: rgba(50,50,50,0.3); color: rgba(255,245,225,0.3);
-      cursor: not-allowed; box-shadow: none;
-    }
-    .cta-disabled:hover { transform: none; box-shadow: none; }
 
-    .panel-info-rows { margin-bottom: 1.2rem; }
+    .panel-body {
+      padding: 1.5rem;
+    }
+
     .info-row {
-      display: flex; align-items: center; gap: 0.7rem;
-      padding: 0.6rem 0; font-size: 0.83rem; color: rgba(255,245,225,0.5);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .info-row:last-child { border-bottom: none; }
-    .info-row i { width: 16px; text-align: center; }
-    .panel-live .info-row i { color: rgba(255,100,100,0.7); }
-    .panel-rec  .info-row i { color: rgba(100,150,255,0.7); }
-    .info-row span { color: rgba(255,245,225,0.75); font-weight: 500; }
-
-    /* coming soon badge */
-    .coming-soon-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.3);
-      color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 50px;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      font-size: 0.85rem;
+      color: rgba(255, 245, 225, 0.6);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Times New Roman', Times, serif;
     }
 
-    /* === FOOTER === */
+    .panel-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 40px;
+      border: none;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      margin-top: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .cta-live { background: linear-gradient(135deg, #8B0000, #c0392b); color: white; }
+    .cta-rec { background: linear-gradient(135deg, #1a3a7c, #2255cc); color: white; }
+    .cta-notes { background: linear-gradient(135deg, #2a7a2a, #3e9e3e); color: white; }
+    .cta-disabled { background: rgba(80, 80, 80, 0.4); color: rgba(255, 245, 225, 0.4); cursor: not-allowed; }
+
+    .panel-cta:not(.cta-disabled):hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Scroll Top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #8B0000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4a843;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+      border: 1px solid rgba(212, 168, 67, 0.5);
+      z-index: 99;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: scale(1.1);
+      background: #aa2e1e;
+    }
+
     .footer {
-      width: 100%; padding: 1.5rem 2rem;
-      background: rgba(0,0,0,0.6);
-      border-top: 1px solid rgba(139,0,0,0.2);
-      backdrop-filter: blur(20px);
-      display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
-      position: relative; overflow: hidden;
-    }
-    .footer::before {
-      content: ''; position: absolute; top:0; left:0; right:0; height:1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0.3;
-    }
-    .footer p { font-size: 0.82rem; color: rgba(255,245,225,0.4); letter-spacing: 1px; }
-    .footer a { color: #85d5f2; text-decoration: none; font-weight: 600; }
-    .footer a:hover { color: var(--gold); }
-    .footer-brand {
-      font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: 700;
-      background: linear-gradient(90deg, var(--ember), var(--gold));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      letter-spacing: 2px; margin-bottom: 0.3rem;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(212, 168, 67, 0.2);
+      font-family: 'Times New Roman', Times, serif;
+      margin-top: 2rem;
     }
 
     /* Responsive */
-    @media (max-width: 720px) {
-      .two-panels { grid-template-columns: 1fr; }
-      .header { padding: 1rem; }
-      .brand-name { font-size: 1.1rem; }
-      .header-title { display: none; }
-    }
-    @media (max-width: 480px) {
-      .main { padding: 1.5rem 1rem; }
-      .login-card { padding: 2rem 1.5rem; }
+    @media (max-width: 900px) {
+      .three-panels { grid-template-columns: 1fr; gap: 1.2rem; }
       .teacher-grid { grid-template-columns: repeat(2, 1fr); }
+      .header { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0.8rem; }
+      .brand-name { font-size: 1.3rem; }
+      .login-card { padding: 2rem 1.5rem; margin: 1rem; }
+      .login-title { font-size: 1.6rem; }
+      .uname { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 550px) {
+      .teacher-grid { grid-template-columns: 1fr; }
+      .selected-teacher-info { width: 90%; }
     }
   </style>
 </head>
 <body>
-
 <div class="bg-scene">
   <div class="hex-grid"></div>
   <div class="orb orb-1"></div>
@@ -613,14 +749,12 @@
 </div>
 
 <div class="wrapper">
-
-  <!-- HEADER -->
   <header class="header">
     <div class="header-left">
       <img src="logo.png" alt="GPAT Gyan" class="logo">
       <div class="brand">
         <div class="brand-name">GPAT GYAN</div>
-        <div class="brand-sub">Cheers for the success</div>
+        <div class="brand-sub">Cheers for The Success</div>
       </div>
     </div>
     <div class="header-center">
@@ -634,227 +768,134 @@
     </div>
   </header>
 
-  <!-- MAIN -->
   <main class="main">
-
-    <!-- LOGIN -->
     <div id="loginSection">
       <div class="login-card">
-        <div class="login-emblem">
-          <div class="login-emblem-icon"><i class="fas fa-shield-alt"></i></div>
-          <div class="login-title">Secure Access</div>
-          <div class="login-subtitle">GPAT GYAN — CMS Portal</div>
-        </div>
+        <div class="login-emblem-icon"><i class="fas fa-crown"></i></div>
+        <div class="login-title">Secure Access</div>
+        <div class="login-subtitle">GPAT GYAN — CMS</div>
         <div class="field-group">
-          <label class="field-label" for="emailID">Registered Email Address</label>
-          <div class="field-wrap">
-            <input type="email" id="emailID" class="field-input" placeholder="yourmail@gmail.com">
-            <i class="fas fa-envelope field-icon"></i>
-          </div>
+          <label class="field-label">REGISTERED EMAIL</label>
+          <input type="email" id="emailID" class="field-input" placeholder="your.email@example.com">
         </div>
-        <button class="login-btn" onclick="verifyUser()">
-          <span class="btn-shimmer"></span>
-          <i class="fas fa-arrow-right-to-bracket"></i>&nbsp; Access Portal
-        </button>
+        <button class="login-btn" onclick="verifyUser()"><i class="fas fa-arrow-right-to-bracket"></i> &nbsp; Sign in</button>
         <div id="message" class="msg"></div>
       </div>
     </div>
 
-    <!-- DASHBOARD -->
     <div id="dashSection">
-
-      <!-- Welcome Banner -->
       <div class="welcome-banner">
-        <div class="greeting">Welcome back</div>
+        <div class="greeting">Welcome Back</div>
         <div class="uname" id="userName">—</div>
         <div class="divider"></div>
-        <div class="subtitle">Select your educator to access Live or Recorded Classes</div>
+        <div class="subtitle" style="color:rgba(255,245,225,0.6);">Select your educator to access live sessions, recordings & notes</div>
       </div>
 
-      <!-- Teacher Selection -->
-      <div class="section-label"><i class="fas fa-chalkboard-user"></i> Select Educator</div>
-      <div class="teacher-grid" id="teacherGrid">
-        <!-- Populated dynamically -->
-      </div>
+      <div class="section-label"><i class="fas fa-chalkboard-user"></i> Choose Your Educator</div>
+      <div class="teacher-grid" id="teacherGrid"></div>
 
-      <!-- Two Panels -->
       <div class="panels-wrapper" id="panelsWrapper">
-        <div class="panels-header">
-          <div class="selected-teacher-info" id="selTeacherInfo">
-            <div class="sel-avatar" id="selAvatar"><i class="fas fa-user"></i></div>
-            <div>
-              <div class="sel-name" id="selName">—</div>
-              <div class="sel-subject" id="selSubject">—</div>
-            </div>
-          </div>
-          <div class="coming-soon-badge" id="comingSoonBadge" style="display:none;">
-            <i class="fas fa-clock"></i> More features coming soon
-          </div>
+        <div class="selected-teacher-info" id="selTeacherInfo">
+          <div class="sel-avatar" id="selAvatar"><i class="fas fa-user-graduate"></i></div>
+          <div><div class="sel-name" id="selName">—</div><div class="sel-subject" id="selSubject" style="font-size:0.75rem; color:rgba(255,245,225,0.5);">—</div></div>
         </div>
-
-        <div class="two-panels">
-          <!-- LIVE CLASS PANEL -->
+        <div class="three-panels">
           <div class="panel panel-live">
-            <div class="panel-header">
-              <div class="panel-icon-wrap"><i class="fas fa-video"></i></div>
-              <div class="panel-title-area">
-                <div class="panel-type-name">Live Class</div>
-                <div class="panel-desc">Real-time Google Meet session</div>
-              </div>
-              <div class="live-indicator"><div class="live-dot"></div> Live</div>
-            </div>
-            <div class="panel-body">
-              <div class="panel-info-rows">
-                <div class="info-row"><i class="fas fa-circle-dot"></i> Platform: <span>Google Meet</span></div>
-                <div class="info-row"><i class="fas fa-users"></i> Mode: <span>Interactive / Q&amp;A</span></div>
-                <div class="info-row"><i class="fas fa-wifi"></i> Requires: <span>Stable Internet</span></div>
-              </div>
-              <a id="liveBtn" href="#" class="panel-cta cta-live" target="_blank" onclick="return handleLive(event)">
-                <i class="fas fa-play-circle"></i> Join Live Class
-              </a>
-            </div>
+            <div class="panel-header"><div class="panel-icon-wrap"><i class="fas fa-video"></i></div><div class="panel-title-area"><div class="panel-type-name">Live Class</div><div class="panel-desc">Interactive Google Meet</div></div><div class="live-indicator"><div class="live-dot"></div> LIVE</div></div>
+            <div class="panel-body"><div class="info-row"><i class="fas fa-circle-dot"></i> Real-time mentoring</div><div class="info-row"><i class="fas fa-comments"></i> Q&A & Discussions</div><a id="liveBtn" href="#" class="panel-cta cta-live" target="_blank" onclick="return handleLive(event)"><i class="fas fa-play-circle"></i> Join Live Class</a></div>
           </div>
-
-          <!-- RECORDED PANEL -->
           <div class="panel panel-rec">
-            <div class="panel-header">
-              <div class="panel-icon-wrap"><i class="fab fa-youtube"></i></div>
-              <div class="panel-title-area">
-                <div class="panel-type-name">Recorded Videos</div>
-                <div class="panel-desc">YouTube playlist — watch anytime</div>
-              </div>
-            </div>
-            <div class="panel-body">
-              <div class="panel-info-rows">
-                <div class="info-row"><i class="fab fa-youtube"></i> Platform: <span>YouTube Playlist</span></div>
-                <div class="info-row"><i class="fas fa-clock-rotate-left"></i> Mode: <span>Self-paced / Revision</span></div>
-                <div class="info-row"><i class="fas fa-repeat"></i> Access: <span>Unlimited Replays</span></div>
-              </div>
-              <a id="recBtn" href="#" class="panel-cta cta-rec" target="_blank" onclick="return handleRec(event)">
-                <i class="fab fa-youtube"></i> Watch Recordings
-              </a>
-            </div>
+            <div class="panel-header"><div class="panel-icon-wrap"><i class="fab fa-youtube"></i></div><div class="panel-title-area"><div class="panel-type-name">Recorded Videos</div><div class="panel-desc">YouTube Playlists</div></div></div>
+            <div class="panel-body"><div class="info-row"><i class="fas fa-clock-rotate-left"></i> Self-paced learning</div><div class="info-row"><i class="fas fa-infinity"></i> Unlimited access</div><a id="recBtn" href="#" class="panel-cta cta-rec" target="_blank" onclick="return handleRec(event)"><i class="fab fa-youtube"></i> Watch Recordings</a></div>
+          </div>
+          <div class="panel panel-notes">
+            <div class="panel-header"><div class="panel-icon-wrap"><i class="fas fa-pen-fancy"></i></div><div class="panel-title-area"><div class="panel-type-name">Class Notes</div><div class="panel-desc">Google Drive Resources</div></div></div>
+            <div class="panel-body"><div class="info-row"><i class="fab fa-google-drive"></i> PDFs, Slides, Handouts</div><div class="info-row"><i class="fas fa-download"></i> Download & Revise</div><a id="notesBtn" href="#" class="panel-cta cta-notes" target="_blank" onclick="return handleNotes(event)"><i class="fas fa-folder-open"></i> Access Notes</a></div>
           </div>
         </div>
       </div>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-brand">GPAT GYAN</div>
-    <p>CMS is owned and administered by @GPAT_GYAN</p>
-    <p>Developed &amp; Managed by <b><a href="https://moinak1611.github.io/-akash_chandra/" target="_blank">Akash Chandra</a></b></p>
+    <p style="margin-top:0.5rem;">CMS is owned and administered by @GPAT_GYAN</p>
+    <p>Developed & Managed by <b><a href="https://moinak1611.github.io/-akash_chandra/" target="_blank" style="color:#d4a843;">Akash Chandra</a></b></p>
   </footer>
-
+  <div class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></div>
 </div>
 
 <script>
-  // === DATA ===
-  const students = {
-    "akashchandra1611@gmail.com": "Akash Chandra",
-    "upen978kumar983@gmail.com": "Upendra Kumar",
-    "ritobhashdgp@gmail.com": "Ritobhash Chatterjee",
-    "mondalayush098@gmail.com": "Ayush Mondal",
-    "8ektatoppo30@gmail.com": "Ekta Toppo",
-    "ankanakundu2206@gmail.com": "Ankana Kundu",
-    "Shrabonibiswas76@gmail.com": "Shraboni Biswas",
-    "mineshdewangan36@gmail.com": "Minesh Dewangan",
-    "paulpiyel@gmail.com": "Piyel Paul",
-    "paulriyel@gmail.com": "Riyel Paul",
-    "rahimamallick1@gmail.com": "Rahima Mallick",
-    "kushbu1412@gmail.com": "Kushabu",
-    "syedzeriff14@gmail.com": "M.Syed Mohamed Zeriff",
-    "roshnibiswas140@gmail.com": "Manasi Biswas",
-    "sovanpandab2004@gmail.com": "Sovan Pandab",
-    "tamannagagi@gmail.com": "Tamanna Gaji",
-    "mandalbristi46@gmail.com": "Bristi Mandal",
-    "anubhab896@gmail.com": "Anubhab Saha",
-    "sayandippaul9@gmail.com": "Sayandip Paul",
-    "sayanbera1990@gmail.com": "Sayan Bera",
-    "subhadeep0295@gmail.com": "Subhadeep",
-    "ankanam91@gmail.com": "Ankana Mitra",
-    "sanchitabera1234@gmail.com": "Sanchita Bera",
-    "dhrubajyotimahata87@gmail.com": "Dhrubajyoti Mahata",
-    "span25073@gmail.com": "Subhasish Pan",
-    "hazraneharup@gmail.com": "Neha Hazra",
-    "18amritanandi@gmail.com": "Amrita Nandi",
-    "karinakhatun7869@gmail.com": "Karina Khatun",
-    "komallade69@gmail.com": "Komal Mahendra Lade",
-    "kotnakesayali@gmail.com": "Sayali Shankar Kotnake",
-    "saujanya559@gmail.com": "Saujanya",
-    "suhasdas422004@gmail.com": "Suhas Das",
-    "mankitamaiti@gmail.com": "Mankita Maiti",
-    "tanmoymondal12042000@gmail.com": "Tanmoy Mondal",
-    "aditisutradhar767@gmail.com": "Aditi Sutradhar",
-    "icon.sahelimondal@gmail.com": "Saheli Mondal",
-    "pmandira304@gmail.com": "Mandira Pal",
-    "mondalpurbasha2004@gmail.com": "Purbasha Mondal",
-    "saikatsaikat201@gmail.com": "Saikat Das",
-    "jyotisigar@gmail.com": "Jyoti Bala",
-    "souravbhattacharya87@gmail.com": "Sourav Bhattacharya",
-    "subhasissen000@gmail.com": "Subhasis Sen",
-    "arfadesai23@gmail.com": "Arfa Khalil Desai",
-    "palsudipta595@gmail.com": "Sudipta Pal",
-    "biswassanket2003@gmail.com": "Sanket Biswas",
-    "daasathi7@gmail.com": "Sathi Das",
-    "howiam940@gmail.com": "Suman Paria",
-    "polleyarju@gmail.com": "Bidesh Polley",
-    "mondalanurikta007@gmail.com": "Anurikta Mondal",
-    "girisathi2022@gmail.com": "Sathi Giri",
-    "pritamm1211@gmail.com": "Pritam Maity",
-    "sakshinayakal121@gmail.com": "Sakshi Dhananjay Nayakal",
-    "noopurtatkari@gmail.com": "Noopur Ninad Tatkari",
-    "pulak8542@gmail.com": "Pulak Das",
-    "mdtoushifhossain2001@gmail.com": "Md Toushif Hossain",
-  };
+  const students = { "akashchandra1611@gmail.com":"Akash Chandra",
+                     "upen978kumar983@gmail.com":"Upendra Kumar",
+                      "ritobhashdgp@gmail.com":"Ritobhash Chatterjee",
+                      "mondalayush098@gmail.com":"Ayush Mondal",
+                      "8ektatoppo30@gmail.com":"Ekta Toppo",
+                      "ankanakundu2206@gmail.com":"Ankana Kundu",
+                      "Shrabonibiswas76@gmail.com":"Shraboni Biswas",
+                      "mineshdewangan36@gmail.com":"Minesh Dewangan",
+                      "paulpiyel@gmail.com":"Piyel Paul",
+                      "paulriyel@gmail.com":"Riyel Paul",
+                      "rahimamallick1@gmail.com":"Rahima Mallick",
+                      "kushbu1412@gmail.com":"Kushabu",
+                      "syedzeriff14@gmail.com":"M.Syed Mohamed Zeriff",
+                      "roshnibiswas140@gmail.com":"Manasi Biswas",
+                      "sovanpandab2004@gmail.com":"Sovan Pandab",
+                      "tamannagagi@gmail.com":"Tamanna Gaji",
+                      "mandalbristi46@gmail.com":"Bristi Mandal",
+                      "anubhab896@gmail.com":"Anubhab Saha",
+                      "sayandippaul9@gmail.com":"Sayandip Paul",
+                      "sayanbera1990@gmail.com":"Sayan Bera",
+                      "subhadeep0295@gmail.com":"Subhadeep",
+                      "ankanam91@gmail.com":"Ankana Mitra",
+                      "sanchitabera1234@gmail.com":"Sanchita Bera",
+                      "dhrubajyotimahata87@gmail.com":"Dhrubajyoti Mahata",
+                      "span25073@gmail.com":"Subhasish Pan",
+                      "hazraneharup@gmail.com":"Neha Hazra",
+                      "18amritanandi@gmail.com":"Amrita Nandi",
+                      "karinakhatun7869@gmail.com":"Karina Khatun",
+                      "komallade69@gmail.com":"Komal Mahendra Lade",
+                      "kotnakesayali@gmail.com":"Sayali Shankar Kotnake",
+                      "saujanya559@gmail.com":"Saujanya",
+                      "suhasdas422004@gmail.com":"Suhas Das",
+                      "mankitamaiti@gmail.com":"Mankita Maiti",
+                      "tanmoymondal12042000@gmail.com":"Tanmoy Mondal",
+                      "aditisutradhar767@gmail.com":"Aditi Sutradhar",
+                      "icon.sahelimondal@gmail.com":"Saheli Mondal",
+                      "pmandira304@gmail.com":"Mandira Pal",
+                      "mondalpurbasha2004@gmail.com":"Purbasha Mondal",
+                      "saikatsaikat201@gmail.com":"Saikat Das",
+                      "jyotisigar@gmail.com":"Jyoti Bala",
+                      "souravbhattacharya87@gmail.com":"Sourav Bhattacharya",
+                      "subhasissen000@gmail.com":"Subhasis Sen",
+                      "arfadesai23@gmail.com":"Arfa Khalil Desai",
+                      "palsudipta595@gmail.com":"Sudipta Pal",
+                      "biswassanket2003@gmail.com":"Sanket Biswas",
+                      "daasathi7@gmail.com":"Sathi Das",
+                      "howiam940@gmail.com":"Suman Paria",
+                      "polleyarju@gmail.com":"Bidesh Polley",
+                      "mondalanurikta007@gmail.com":"Anurikta Mondal",
+                      "girisathi2022@gmail.com":"Sathi Giri",
+                      "pritamm1211@gmail.com":"Pritam Maity",
+                      "sakshinayakal121@gmail.com":"Sakshi Dhananjay Nayakal",
+                      "noopurtatkari@gmail.com":"Noopur Ninad Tatkari",
+                      "pulak8542@gmail.com":"Pulak Das",
+                      "mdtoushifhossain2001@gmail.com":"Md Toushif Hossain" };
 
-  const admins = {
-    "arijitbhowmik1602@gmail.com": "Arijit",
-    "dey.chyan@gmail.com": "Chyan",
-    "indrajitlaha9564@gmail.com": "Indrajit",
-    "banerjeeshreyashi05@gmail.com": "Shreyashi",
-    "hardikpruthi22@gmail.com": "Hardik",
-    "debjitadak97@gmail.com": "Debjit",
-    "sudeshnachandra2002@gmail.com": "Akash",
-  };
+  const admins = { "arijitbhowmik1602@gmail.com":"Arijit","dey.chyan@gmail.com":"Chyan","indrajitlaha9564@gmail.com":"Indrajit","banerjeeshreyashi05@gmail.com":"Shreyashi","hardikpruthi22@gmail.com":"Hardik","debjitadak97@gmail.com":"Debjit","sudeshnachandra2002@gmail.com":"Akash" };
 
   const teachers = [
-    { key: "Arijit",    name: "Arijit Bhowmik",      subject: "Pharmaceutics",             icon: "fas fa-prescription-bottle-alt", meet: "https://meet.google.com/fpa-chyp-gfb",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm" },
-    { key: "Chyan",     name: "Chyan Dey",            subject: "Pharmaceutics",             icon: "fas fa-book",                    meet: "https://meet.google.com/qvj-aocv-cdp",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVLgD6rZAnn84yKHR8f05QiO" },
-    { key: "Indrajit",  name: "Indrajit Laha",        subject: "Pharmacology",              icon: "fas fa-heartbeat",               meet: "https://meet.google.com/acs-cxux-smg",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVJmU3WWSeu_ifEmypowFGH9" },
-    { key: "Shreyashi", name: "Shreyashi Banerjee",   subject: "Pharmacognosy",             icon: "fas fa-microscope",              meet: "https://meet.google.com/soi-kaoi-tgc",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVKHO-jjxOP1I5rBVDqdz3-r" },
-    { key: "",    name: "Update Soon!",         subject: "Coming soon…",              icon: "fas fa-flask",                   meet: "",                                       playlist: "" },
-    { key: "Hardik",    name: "Hardik",               subject: "Clinical Research",         icon: "fas fa-brain",                   meet: "https://meet.google.com/fnv-eupf-chx",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVLefFgeXRWfRJ15gUqMB4O4" },
-    { key: "Debjit",    name: "Debjit Adak",          subject: "Pharmaceutical Chemistry",  icon: "fas fa-dna",                     meet: "https://meet.google.com/tin-tjet-wem",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVJoisuxqWsyEwH3UUkMBdu2" },
-    { key: "Akash",     name: "Akash Chandra",        subject: "Pharmaceutical Chemistry",  icon: "fas fa-atom",                    meet: "https://meet.google.com/cyt-mznn-oui",  playlist: "https://www.youtube.com/playlist?list=PLAlXTa_uWTVISP0Zdxj1Z4ni1oolglB7G" },
+    { key:"Arijit", name:"Arijit Bhowmik", subject:"Pharmaceutics", icon:"fas fa-prescription-bottle-alt", meet:"https://meet.google.com/fpa-chyp-gfb", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm", notes:"https://drive.google.com/drive/folders/1cx8p_uvdFzEJI13u3IzaMIX8NLqd1n2-?usp=sharing" },
+    { key:"Chyan", name:"Chyan Dey", subject:"Pharmaceutics", icon:"fas fa-book", meet:"https://meet.google.com/qvj-aocv-cdp", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLgD6rZAnn84yKHR8f05QiO", notes:"https://drive.google.com/drive/folders/1H2QtL36f6dBU636AxtYwemHVRAt0kyGv?usp=sharing" },
+    { key:"Indrajit", name:"Indrajit Laha", subject:"Pharmacology", icon:"fas fa-heartbeat", meet:"https://meet.google.com/acs-cxux-smg", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJmU3WWSeu_ifEmypowFGH9", notes:"https://drive.google.com/drive/folders/14zM9WD_HS4g36Z6DZb10hOpJo8kyTIqK?usp=sharing" },
+    { key:"Shreyashi", name:"Shreyashi Banerjee", subject:"Pharmacognosy", icon:"fas fa-microscope", meet:"https://meet.google.com/soi-kaoi-tgc", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVKHO-jjxOP1I5rBVDqdz3-r", notes:"https://drive.google.com/drive/folders/1uvx2VotFY-xOUD3aV1vydHEjJQptTVeN?usp=sharing" },
+    { key:"Hardik", name:"Hardik", subject:"Clinical Research", icon:"fas fa-brain", meet:"https://meet.google.com/fnv-eupf-chx", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLefFgeXRWfRJ15gUqMB4O4", notes:"https://drive.google.com/drive/folders/1jLWiO6EdhdeKs6t_WchfkSQgBV77uXi_?usp=sharing" },
+    { key:"Debjit", name:"Debjit Adak", subject:"Pharmaceutical Chemistry", icon:"fas fa-dna", meet:"https://meet.google.com/tin-tjet-wem", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJoisuxqWsyEwH3UUkMBdu2", notes:"https://drive.google.com/drive/folders/1qF4xXmDJkJeHslkv0lAq0ngy-Scdom6E?usp=sharing" },
+    { key:"Akash", name:"Akash Chandra", subject:"Pharmaceutical Chemistry", icon:"fas fa-atom", meet:"https://meet.google.com/cyt-mznn-oui", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVISP0Zdxj1Z4ni1oolglB7G", notes:"https://drive.google.com/drive/folders/1qFVBLiovZ5PDMqDpTBebQkma93QBMarl?usp=sharing" },
+    { key:"UpdateSoon", name:"Update Soon!", subject:"Coming soon…", icon:"fas fa-flask", meet:"", playlist:"", notes:"" }
   ];
 
   let selectedTeacher = null;
 
-  // === PARTICLES ===
-  (function createParticles() {
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 35; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 4 + 1.5;
-      const drift = (Math.random() - 0.5) * 40;
-      p.style.cssText = `
-        width:${size}px; height:${size}px;
-        left:${Math.random()*100}%;
-        bottom:0;
-        --drift:${drift}px;
-        animation-duration:${Math.random()*15+10}s;
-        animation-delay:${Math.random()*10}s;
-        opacity:0;
-      `;
-      container.appendChild(p);
-    }
-  })();
-
-  // === RENDER TEACHER CARDS ===
   function renderTeachers() {
     const grid = document.getElementById('teacherGrid');
     grid.innerHTML = '';
@@ -863,124 +904,62 @@
       card.className = 'teacher-card';
       card.dataset.key = t.key;
       card.onclick = () => selectTeacher(t.key);
-      const isAvailable = !!(t.meet || t.playlist);
-      card.innerHTML = `
-        ${isAvailable ? '<div class="t-badge"></div>' : '<div class="t-badge offline"></div>'}
-        <div class="t-icon"><i class="${t.icon}"></i></div>
-        <div class="t-name">${t.name}</div>
-        <div class="t-subject">${t.subject}</div>
-      `;
+      const hasContent = !!(t.meet || t.playlist || t.notes);
+      card.innerHTML = `${hasContent ? '<div class="t-badge"></div>' : ''}<div class="t-icon"><i class="${t.icon}"></i></div><div class="t-name">${t.name}</div><div class="t-subject">${t.subject}</div>`;
       grid.appendChild(card);
     });
   }
 
-  // === SELECT TEACHER ===
   function selectTeacher(key) {
     selectedTeacher = teachers.find(t => t.key === key);
     if (!selectedTeacher) return;
-
-    // Update card highlight
     document.querySelectorAll('.teacher-card').forEach(c => c.classList.remove('selected'));
-    document.querySelector(`.teacher-card[data-key="${key}"]`).classList.add('selected');
-
-    // Update panel header info
+    const target = document.querySelector(`.teacher-card[data-key="${key}"]`);
+    if(target) target.classList.add('selected');
     document.getElementById('selName').textContent = selectedTeacher.name;
     document.getElementById('selSubject').textContent = selectedTeacher.subject;
-    const avatar = document.getElementById('selAvatar');
-    avatar.innerHTML = `<i class="${selectedTeacher.icon}"></i>`;
-
-    // Update Live button
-    const liveBtn = document.getElementById('liveBtn');
-    if (selectedTeacher.meet) {
-      liveBtn.href = selectedTeacher.meet;
-      liveBtn.className = 'panel-cta cta-live';
-      liveBtn.innerHTML = `<i class="fas fa-play-circle"></i> Join Live Class`;
-    } else {
-      liveBtn.href = '#';
-      liveBtn.className = 'panel-cta cta-disabled';
-      liveBtn.innerHTML = `<i class="fas fa-clock"></i> Coming Soon`;
-    }
-
-    // Update Recorded button
-    const recBtn = document.getElementById('recBtn');
-    if (selectedTeacher.playlist) {
-      recBtn.href = selectedTeacher.playlist;
-      recBtn.className = 'panel-cta cta-rec';
-      recBtn.innerHTML = `<i class="fab fa-youtube"></i> Watch Recordings`;
-    } else {
-      recBtn.href = '#';
-      recBtn.className = 'panel-cta cta-disabled';
-      recBtn.innerHTML = `<i class="fas fa-clock"></i> Playlist Coming Soon`;
-    }
-
-    // Show panels
-    const wrapper = document.getElementById('panelsWrapper');
-    wrapper.classList.add('active');
-
-    // Scroll to panels
-    setTimeout(() => {
-      wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
+    document.getElementById('selAvatar').innerHTML = `<i class="${selectedTeacher.icon}"></i>`;
+    const live = document.getElementById('liveBtn');
+    if(selectedTeacher.meet) { live.href = selectedTeacher.meet; live.className = 'panel-cta cta-live'; live.innerHTML = `<i class="fas fa-play-circle"></i> Join Live Class`; }
+    else { live.href = '#'; live.className = 'panel-cta cta-disabled'; live.innerHTML = `<i class="fas fa-clock"></i> Coming Soon`; }
+    const rec = document.getElementById('recBtn');
+    if(selectedTeacher.playlist) { rec.href = selectedTeacher.playlist; rec.className = 'panel-cta cta-rec'; rec.innerHTML = `<i class="fab fa-youtube"></i> Watch Recordings`; }
+    else { rec.href = '#'; rec.className = 'panel-cta cta-disabled'; rec.innerHTML = `<i class="fas fa-clock"></i> Playlist Soon`; }
+    const notes = document.getElementById('notesBtn');
+    if(selectedTeacher.notes && selectedTeacher.notes.trim()) { notes.href = selectedTeacher.notes; notes.className = 'panel-cta cta-notes'; notes.innerHTML = `<i class="fas fa-folder-open"></i> Access Notes`; }
+    else { notes.href = '#'; notes.className = 'panel-cta cta-disabled'; notes.innerHTML = `<i class="fas fa-ban"></i> Notes Unavailable`; }
+    document.getElementById('panelsWrapper').classList.add('active');
+    setTimeout(() => document.getElementById('threePanels')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
   }
-
-  function handleLive(e) {
-    if (!selectedTeacher || !selectedTeacher.meet) { e.preventDefault(); return false; }
-    return true;
-  }
-  function handleRec(e) {
-    if (!selectedTeacher || !selectedTeacher.playlist) { e.preventDefault(); return false; }
-    return true;
-  }
-
-  // === VERIFY USER ===
+  function handleLive(e) { if (!selectedTeacher?.meet) { e.preventDefault(); return false; } return true; }
+  function handleRec(e) { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; }
+  function handleNotes(e) { if (!selectedTeacher?.notes) { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; }
   function verifyUser() {
     const email = document.getElementById('emailID').value.trim();
-    const msg = document.getElementById('message');
-    msg.className = 'msg'; msg.textContent = '';
-
-    if (!email) {
-      showMsg('Please enter your registered email ID'); return;
-    }
-    if (!email.includes('@') || !email.includes('.')) {
-      showMsg('Please enter a valid email address'); return;
-    }
-
+    const msgDiv = document.getElementById('message');
+    if(!email) { msgDiv.innerHTML = "Please enter registered email"; msgDiv.className = "msg error"; return; }
     const name = students[email] || (admins[email] ? `Admin: ${admins[email]}` : null);
-    if (name) {
-      // Animate out
+    if(name) {
       const loginSec = document.getElementById('loginSection');
-      loginSec.style.transition = 'all 0.5s cubic-bezier(0.16,1,0.3,1)';
+      loginSec.style.transition = 'all 0.5s';
       loginSec.style.opacity = '0';
-      loginSec.style.transform = 'translateY(-30px) scale(0.95)';
-
+      loginSec.style.transform = 'translateY(-40px)';
       setTimeout(() => {
         loginSec.style.display = 'none';
-        // Show badge
         document.getElementById('badgeName').textContent = name.replace('Admin: ','');
         document.getElementById('userBadge').classList.add('visible');
-        // Show dash
         document.getElementById('userName').textContent = name;
-        const dash = document.getElementById('dashSection');
-        dash.classList.add('visible');
+        document.getElementById('dashSection').classList.add('visible');
         renderTeachers();
       }, 500);
-    } else {
-      showMsg('Email not registered. Please contact Admin.');
-    }
+    } else { msgDiv.innerHTML = "Email not registered. Contact Admin."; msgDiv.className = "msg error"; }
   }
-
-  function showMsg(text) {
-    const msg = document.getElementById('message');
-    msg.textContent = text;
-    msg.className = 'msg error';
-    msg.style.animation = 'none';
-    requestAnimationFrame(() => { msg.style.animation = ''; });
-  }
-
-  // Enter key
-  document.getElementById('emailID').addEventListener('keydown', e => {
-    if (e.key === 'Enter') verifyUser();
-  });
+  window.addEventListener('scroll', () => { const btn = document.getElementById('scrollTopBtn'); if(window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible'); });
+  (function createParticles() {
+    const container = document.getElementById('particles');
+    for(let i=0;i<45;i++){ const p=document.createElement('div'); p.className='particle'; const s=Math.random()*5+2; const drift=(Math.random()-0.5)*70; p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:0;--drift:${drift}px;animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s;`; container.appendChild(p); }
+  })();
+  document.getElementById('emailID')?.addEventListener('keydown', e => { if(e.key === 'Enter') verifyUser(); });
 </script>
 </body>
 </html>
