@@ -92,7 +92,7 @@
       flex-direction: column;
     }
 
-    /* === HEADER - Elegant === */
+    /* === HEADER === */
     .header {
       display: flex;
       align-items: center;
@@ -195,7 +195,7 @@
       padding: 2rem 1.5rem;
     }
 
-    /* === LOGIN SECTION - LARGER, CENTERED, ELEGANT === */
+    /* === LOGIN SECTION === */
     #loginSection {
       width: 100%;
       max-width: 620px;
@@ -204,14 +204,8 @@
     }
 
     @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(60px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .login-card {
@@ -272,7 +266,7 @@
     }
 
     .field-group {
-      margin: 2rem 0 1.8rem;
+      margin: 1.4rem 0;
       text-align: left;
     }
 
@@ -306,6 +300,33 @@
       box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
     }
 
+    /* Password wrapper with eye toggle */
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper .field-input {
+      padding-right: 3rem;
+    }
+
+    .eye-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(212, 168, 67, 0.6);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.3rem;
+      transition: color 0.2s;
+    }
+
+    .eye-toggle:hover {
+      color: #d4a843;
+    }
+
     .login-btn {
       width: 100%;
       padding: 1rem 1.5rem;
@@ -319,7 +340,7 @@
       color: #FFF5E1;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       position: relative;
       overflow: hidden;
     }
@@ -368,14 +389,8 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .welcome-banner {
@@ -428,6 +443,68 @@
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent);
+    }
+
+    /* === CLASS SCHEDULE SECTION === */
+    .schedule-section {
+      margin-bottom: 3rem;
+    }
+
+    .schedule-card {
+      background: rgba(10, 5, 5, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 168, 67, 0.35);
+      border-radius: 24px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: all 0.4s ease;
+    }
+
+    .schedule-card:hover {
+      border-color: rgba(212, 168, 67, 0.6);
+      box-shadow: 0 25px 60px rgba(139, 0, 0, 0.25);
+    }
+
+    .schedule-img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+    }
+
+    .schedule-img-wrapper img {
+      max-width: 100%;
+      max-height: 600px;
+      width: auto;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 168, 67, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      display: block;
+      object-fit: contain;
+    }
+
+    .schedule-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 2px dashed rgba(212, 168, 67, 0.25);
+      border-radius: 16px;
+      color: rgba(255, 245, 225, 0.35);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      width: 100%;
+    }
+
+    .schedule-placeholder i {
+      font-size: 3rem;
+      color: rgba(212, 168, 67, 0.3);
     }
 
     /* Teacher Grid */
@@ -506,7 +583,7 @@
       box-shadow: 0 0 8px #44ff44;
     }
 
-    /* Panels - 3 Column */
+    /* Panels */
     .panels-wrapper {
       opacity: 0;
       transform: translateY(30px);
@@ -564,9 +641,7 @@
       transition: all 0.4s ease;
     }
 
-    .panel:hover {
-      transform: translateY(-6px);
-    }
+    .panel:hover { transform: translateY(-6px); }
 
     .panel-header {
       padding: 1.2rem 1.5rem;
@@ -637,9 +712,7 @@
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    .panel-body {
-      padding: 1.5rem;
-    }
+    .panel-body { padding: 1.5rem; }
 
     .info-row {
       display: flex;
@@ -703,15 +776,8 @@
       z-index: 99;
     }
 
-    .scroll-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .scroll-top:hover {
-      transform: scale(1.1);
-      background: #aa2e1e;
-    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; }
+    .scroll-top:hover { transform: scale(1.1); background: #aa2e1e; }
 
     .footer {
       text-align: center;
@@ -769,48 +835,114 @@
   </header>
 
   <main class="main">
+    <!-- LOGIN SECTION -->
     <div id="loginSection">
       <div class="login-card">
         <div class="login-emblem-icon"><i class="fas fa-crown"></i></div>
         <div class="login-title">Secure Access</div>
         <div class="login-subtitle">GPAT GYAN — CMS</div>
+
         <div class="field-group">
           <label class="field-label">REGISTERED EMAIL</label>
           <input type="email" id="emailID" class="field-input" placeholder="your.email@example.com">
         </div>
+
+        <div class="field-group">
+          <label class="field-label">PASSWORD</label>
+          <div class="password-wrapper">
+            <input type="password" id="passwordID" class="field-input" placeholder="Enter your password">
+            <button class="eye-toggle" id="eyeBtn" type="button" onclick="togglePassword()" title="Show/Hide Password">
+              <i class="fas fa-eye" id="eyeIcon"></i>
+            </button>
+          </div>
+        </div>
+
         <button class="login-btn" onclick="verifyUser()"><i class="fas fa-arrow-right-to-bracket"></i> &nbsp; Sign in</button>
         <div id="message" class="msg"></div>
       </div>
     </div>
 
+    <!-- DASHBOARD SECTION -->
     <div id="dashSection">
       <div class="welcome-banner">
         <div class="greeting">Welcome Back</div>
         <div class="uname" id="userName">—</div>
         <div class="divider"></div>
-        <div class="subtitle" style="color:rgba(255,245,225,0.6);">Select your educator to access live sessions, recordings & notes</div>
+        <div class="subtitle" style="color:rgba(255,245,225,0.6);">Select your educator to access live sessions, recordings &amp; notes</div>
       </div>
 
+      <!-- CLASS SCHEDULE -->
+      <div class="schedule-section">
+        <div class="section-label"><i class="fas fa-calendar-days"></i> Class Schedule</div>
+        <div class="schedule-card">
+          <div class="schedule-img-wrapper">
+            <!--
+              ════════════════════════════════════════════════════════
+              HOW TO ADD YOUR CLASS SCHEDULE IMAGE:
+              Replace the placeholder below with an <img> tag.
+              Example:
+                <img src="schedule.jpg" alt="Class Schedule">
+              OR for an online image:
+                <img src="schedule.jpg" alt="Class Schedule">
+              ════════════════════════════════════════════════════════
+            -->
+            <div class="schedule-placeholder" id="schedulePlaceholder">
+              <i class="fas fa-calendar-alt"></i>
+              <span>Class Schedule Image</span>
+              <span style="font-size:0.8rem; opacity:0.6;">Paste your schedule image here</span>
+            </div>
+            <!-- PASTE YOUR IMAGE TAG BELOW THIS LINE (and remove the placeholder div above) -->
+            <img src="schedule.jpg" alt="Class Schedule">
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATOR SELECTION -->
       <div class="section-label"><i class="fas fa-chalkboard-user"></i> Choose Your Educator</div>
       <div class="teacher-grid" id="teacherGrid"></div>
 
       <div class="panels-wrapper" id="panelsWrapper">
         <div class="selected-teacher-info" id="selTeacherInfo">
           <div class="sel-avatar" id="selAvatar"><i class="fas fa-user-graduate"></i></div>
-          <div><div class="sel-name" id="selName">—</div><div class="sel-subject" id="selSubject" style="font-size:0.75rem; color:rgba(255,245,225,0.5);">—</div></div>
+          <div>
+            <div class="sel-name" id="selName">—</div>
+            <div class="sel-subject" id="selSubject" style="font-size:0.75rem; color:rgba(255,245,225,0.5);">—</div>
+          </div>
         </div>
         <div class="three-panels">
           <div class="panel panel-live">
-            <div class="panel-header"><div class="panel-icon-wrap"><i class="fas fa-video"></i></div><div class="panel-title-area"><div class="panel-type-name">Live Class</div><div class="panel-desc">Interactive Google Meet</div></div><div class="live-indicator"><div class="live-dot"></div> LIVE</div></div>
-            <div class="panel-body"><div class="info-row"><i class="fas fa-circle-dot"></i> Real-time mentoring</div><div class="info-row"><i class="fas fa-comments"></i> Q&A & Discussions</div><a id="liveBtn" href="#" class="panel-cta cta-live" target="_blank" onclick="return handleLive(event)"><i class="fas fa-play-circle"></i> Join Live Class</a></div>
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fas fa-video"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Live Class</div><div class="panel-desc">Interactive Google Meet</div></div>
+              <div class="live-indicator"><div class="live-dot"></div> LIVE</div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fas fa-circle-dot"></i> Real-time mentoring</div>
+              <div class="info-row"><i class="fas fa-comments"></i> Q&amp;A &amp; Discussions</div>
+              <a id="liveBtn" href="#" class="panel-cta cta-live" target="_blank" onclick="return handleLive(event)"><i class="fas fa-play-circle"></i> Join Live Class</a>
+            </div>
           </div>
           <div class="panel panel-rec">
-            <div class="panel-header"><div class="panel-icon-wrap"><i class="fab fa-youtube"></i></div><div class="panel-title-area"><div class="panel-type-name">Recorded Videos</div><div class="panel-desc">YouTube Playlists</div></div></div>
-            <div class="panel-body"><div class="info-row"><i class="fas fa-clock-rotate-left"></i> Self-paced learning</div><div class="info-row"><i class="fas fa-infinity"></i> Unlimited access</div><a id="recBtn" href="#" class="panel-cta cta-rec" target="_blank" onclick="return handleRec(event)"><i class="fab fa-youtube"></i> Watch Recordings</a></div>
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fab fa-youtube"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Recorded Videos</div><div class="panel-desc">YouTube Playlists</div></div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fas fa-clock-rotate-left"></i> Self-paced learning</div>
+              <div class="info-row"><i class="fas fa-infinity"></i> Unlimited access</div>
+              <a id="recBtn" href="#" class="panel-cta cta-rec" target="_blank" onclick="return handleRec(event)"><i class="fab fa-youtube"></i> Watch Recordings</a>
+            </div>
           </div>
           <div class="panel panel-notes">
-            <div class="panel-header"><div class="panel-icon-wrap"><i class="fas fa-pen-fancy"></i></div><div class="panel-title-area"><div class="panel-type-name">Class Notes</div><div class="panel-desc">Google Drive Resources</div></div></div>
-            <div class="panel-body"><div class="info-row"><i class="fab fa-google-drive"></i> PDFs, Slides, Handouts</div><div class="info-row"><i class="fas fa-download"></i> Download & Revise</div><a id="notesBtn" href="#" class="panel-cta cta-notes" target="_blank" onclick="return handleNotes(event)"><i class="fas fa-folder-open"></i> Access Notes</a></div>
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fas fa-pen-fancy"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Class Notes</div><div class="panel-desc">Google Drive Resources</div></div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fab fa-google-drive"></i> PDFs, Slides, Handouts</div>
+              <div class="info-row"><i class="fas fa-download"></i> Download &amp; Revise</div>
+              <a id="notesBtn" href="#" class="panel-cta cta-notes" target="_blank" onclick="return handleNotes(event)"><i class="fas fa-folder-open"></i> Access Notes</a>
+            </div>
           </div>
         </div>
       </div>
@@ -819,152 +951,256 @@
 
   <footer class="footer">
     <p style="margin-top:0.5rem;">CMS is owned and administered by @GPAT_GYAN</p>
-    <p>Developed & Managed by <b><a href="https://moinak1611.github.io/-akash_chandra/" target="_blank" style="color:#d4a843;">Akash Chandra</a></b></p>
+    <p>Developed &amp; Managed by <b><a href="https://moinak1611.github.io/-akash_chandra/" target="_blank" style="color:#d4a843;">Akash Chandra</a></b></p>
   </footer>
   <div class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></div>
 </div>
 
 <script>
-  const students = { "akashchandra1611@gmail.com":"Akash Chandra",
-                     "upen978kumar983@gmail.com":"Upendra Kumar",
-                      "ritobhashdgp@gmail.com":"Ritobhash Chatterjee",
-                      "mondalayush098@gmail.com":"Ayush Mondal",
-                      "8ektatoppo30@gmail.com":"Ekta Toppo",
-                      "ankanakundu2206@gmail.com":"Ankana Kundu",
-                      "Shrabonibiswas76@gmail.com":"Shraboni Biswas",
-                      "mineshdewangan36@gmail.com":"Minesh Dewangan",
-                      "paulpiyel@gmail.com":"Piyel Paul",
-                      "paulriyel@gmail.com":"Riyel Paul",
-                      "rahimamallick1@gmail.com":"Rahima Mallick",
-                      "kushbu1412@gmail.com":"Kushabu",
-                      "syedzeriff14@gmail.com":"M.Syed Mohamed Zeriff",
-                      "roshnibiswas140@gmail.com":"Manasi Biswas",
-                      "sovanpandab2004@gmail.com":"Sovan Pandab",
-                      "tamannagagi@gmail.com":"Tamanna Gaji",
-                      "mandalbristi46@gmail.com":"Bristi Mandal",
-                      "anubhab896@gmail.com":"Anubhab Saha",
-                      "sayandippaul9@gmail.com":"Sayandip Paul",
-                      "sayanbera1990@gmail.com":"Sayan Bera",
-                      "subhadeep0295@gmail.com":"Subhadeep",
-                      "ankanam91@gmail.com":"Ankana Mitra",
-                      "sanchitabera1234@gmail.com":"Sanchita Bera",
-                      "dhrubajyotimahata87@gmail.com":"Dhrubajyoti Mahata",
-                      "span25073@gmail.com":"Subhasish Pan",
-                      "hazraneharup@gmail.com":"Neha Hazra",
-                      "18amritanandi@gmail.com":"Amrita Nandi",
-                      "karinakhatun7869@gmail.com":"Karina Khatun",
-                      "komallade69@gmail.com":"Komal Mahendra Lade",
-                      "kotnakesayali@gmail.com":"Sayali Shankar Kotnake",
-                      "saujanya559@gmail.com":"Saujanya",
-                      "suhasdas422004@gmail.com":"Suhas Das",
-                      "mankitamaiti@gmail.com":"Mankita Maiti",
-                      "tanmoymondal12042000@gmail.com":"Tanmoy Mondal",
-                      "aditisutradhar767@gmail.com":"Aditi Sutradhar",
-                      "icon.sahelimondal@gmail.com":"Saheli Mondal",
-                      "pmandira304@gmail.com":"Mandira Pal",
-                      "mondalpurbasha2004@gmail.com":"Purbasha Mondal",
-                      "saikatsaikat201@gmail.com":"Saikat Das",
-                      "jyotisigar@gmail.com":"Jyoti Bala",
-                      "souravbhattacharya87@gmail.com":"Sourav Bhattacharya",
-                      "subhasissen000@gmail.com":"Subhasis Sen",
-                      "arfadesai23@gmail.com":"Arfa Khalil Desai",
-                      "palsudipta595@gmail.com":"Sudipta Pal",
-                      "biswassanket2003@gmail.com":"Sanket Biswas",
-                      "daasathi7@gmail.com":"Sathi Das",
-                      "howiam940@gmail.com":"Suman Paria",
-                      "polleyarju@gmail.com":"Bidesh Polley",
-                      "mondalanurikta007@gmail.com":"Anurikta Mondal",
-                      "girisathi2022@gmail.com":"Sathi Giri",
-                      "pritamm1211@gmail.com":"Pritam Maity",
-                      "sakshinayakal121@gmail.com":"Sakshi Dhananjay Nayakal",
-                      "noopurtatkari@gmail.com":"Noopur Ninad Tatkari",
-                      "pulak8542@gmail.com":"Pulak Das",
-                      "mdtoushifhossain2001@gmail.com":"Md Toushif Hossain",
-                      "kgarg0430@gmail.com":"Krishna Garg",
-                      "franklinagudipati01@gmail.com":"G. Franklina",
-                      "tanhaz.work@gmail.com":"Tanhaz Aftab",
-                      "kaifsk399@gmail.com":"Kaif Sekh",
-                      "amarjeetkumar7172050@gmail.com":"Amarjeet Kumar",};
+  /* ─── PASSWORDS ─── */
+  const STUDENT_PASS = "ggs123";
+  const ADMIN_PASS   = "gga123";
 
-  const admins = { "arijitbhowmik1602@gmail.com":"Arijit","dey.chyan@gmail.com":"Chyan","indrajitlaha9564@gmail.com":"Indrajit","banerjeeshreyashi05@gmail.com":"Shreyashi","hardikpruthi22@gmail.com":"Hardik","debjitadak97@gmail.com":"Debjit","sudeshnachandra2002@gmail.com":"Akash" };
+  /* ─── STUDENT LIST ─── */
+  const students = {
+    "akashchandra1611@gmail.com":"Akash Chandra",
+    "upen978kumar983@gmail.com":"Upendra Kumar",
+    "ritobhashdgp@gmail.com":"Ritobhash Chatterjee",
+    "mondalayush098@gmail.com":"Ayush Mondal",
+    "8ektatoppo30@gmail.com":"Ekta Toppo",
+    "ankanakundu2206@gmail.com":"Ankana Kundu",
+    "Shrabonibiswas76@gmail.com":"Shraboni Biswas",
+    "mineshdewangan36@gmail.com":"Minesh Dewangan",
+    "paulpiyel@gmail.com":"Piyel Paul",
+    "paulriyel@gmail.com":"Riyel Paul",
+    "rahimamallick1@gmail.com":"Rahima Mallick",
+    "kushbu1412@gmail.com":"Kushabu",
+    "syedzeriff14@gmail.com":"M.Syed Mohamed Zeriff",
+    "roshnibiswas140@gmail.com":"Manasi Biswas",
+    "sovanpandab2004@gmail.com":"Sovan Pandab",
+    "tamannagagi@gmail.com":"Tamanna Gaji",
+    "mandalbristi46@gmail.com":"Bristi Mandal",
+    "anubhab896@gmail.com":"Anubhab Saha",
+    "sayandippaul9@gmail.com":"Sayandip Paul",
+    "sayanbera1990@gmail.com":"Sayan Bera",
+    "subhadeep0295@gmail.com":"Subhadeep",
+    "ankanam91@gmail.com":"Ankana Mitra",
+    "sanchitabera1234@gmail.com":"Sanchita Bera",
+    "dhrubajyotimahata87@gmail.com":"Dhrubajyoti Mahata",
+    "span25073@gmail.com":"Subhasish Pan",
+    "hazraneharup@gmail.com":"Neha Hazra",
+    "18amritanandi@gmail.com":"Amrita Nandi",
+    "karinakhatun7869@gmail.com":"Karina Khatun",
+    "komallade69@gmail.com":"Komal Mahendra Lade",
+    "kotnakesayali@gmail.com":"Sayali Shankar Kotnake",
+    "saujanya559@gmail.com":"Saujanya",
+    "suhasdas422004@gmail.com":"Suhas Das",
+    "mankitamaiti@gmail.com":"Mankita Maiti",
+    "tanmoymondal12042000@gmail.com":"Tanmoy Mondal",
+    "aditisutradhar767@gmail.com":"Aditi Sutradhar",
+    "icon.sahelimondal@gmail.com":"Saheli Mondal",
+    "pmandira304@gmail.com":"Mandira Pal",
+    "mondalpurbasha2004@gmail.com":"Purbasha Mondal",
+    "saikatsaikat201@gmail.com":"Saikat Das",
+    "jyotisigar@gmail.com":"Jyoti Bala",
+    "souravbhattacharya87@gmail.com":"Sourav Bhattacharya",
+    "subhasissen000@gmail.com":"Subhasis Sen",
+    "arfadesai23@gmail.com":"Arfa Khalil Desai",
+    "palsudipta595@gmail.com":"Sudipta Pal",
+    "biswassanket2003@gmail.com":"Sanket Biswas",
+    "daasathi7@gmail.com":"Sathi Das",
+    "howiam940@gmail.com":"Suman Paria",
+    "polleyarju@gmail.com":"Bidesh Polley",
+    "mondalanurikta007@gmail.com":"Anurikta Mondal",
+    "girisathi2022@gmail.com":"Sathi Giri",
+    "pritamm1211@gmail.com":"Pritam Maity",
+    "sakshinayakal121@gmail.com":"Sakshi Dhananjay Nayakal",
+    "noopurtatkari@gmail.com":"Noopur Ninad Tatkari",
+    "pulak8542@gmail.com":"Pulak Das",
+    "mdtoushifhossain2001@gmail.com":"Md Toushif Hossain",
+    "kgarg0430@gmail.com":"Krishna Garg",
+    "franklinagudipati01@gmail.com":"G. Franklina",
+    "tanhaz.work@gmail.com":"Tanhaz Aftab",
+    "kaifsk399@gmail.com":"Kaif Sekh",
+    "amarjeetkumar7172050@gmail.com":"Amarjeet Kumar"
+  };
 
+  /* ─── ADMIN LIST ─── */
+  const admins = {
+    "arijitbhowmik1602@gmail.com":"Arijit",
+    "dey.chyan@gmail.com":"Chyan",
+    "indrajitlaha9564@gmail.com":"Indrajit",
+    "banerjeeshreyashi05@gmail.com":"Shreyashi",
+    "hardikpruthi22@gmail.com":"Hardik",
+    "debjitadak97@gmail.com":"Debjit",
+    "sudeshnachandra2002@gmail.com":"Akash"
+  };
+
+  /* ─── TEACHERS ─── */
   const teachers = [
-    { key:"Arijit", name:"Arijit Bhowmik", subject:"Pharmaceutics", icon:"fas fa-prescription-bottle-alt", meet:"https://meet.google.com/fpa-chyp-gfb", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm", notes:"https://drive.google.com/drive/folders/1cx8p_uvdFzEJI13u3IzaMIX8NLqd1n2-?usp=sharing" },
-    { key:"Chyan", name:"Chyan Dey", subject:"Pharmaceutics", icon:"fas fa-book", meet:"https://meet.google.com/qvj-aocv-cdp", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLgD6rZAnn84yKHR8f05QiO", notes:"https://drive.google.com/drive/folders/1H2QtL36f6dBU636AxtYwemHVRAt0kyGv?usp=sharing" },
-    { key:"Indrajit", name:"Indrajit Laha", subject:"Pharmacology", icon:"fas fa-heartbeat", meet:"https://meet.google.com/acs-cxux-smg", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJmU3WWSeu_ifEmypowFGH9", notes:"https://drive.google.com/drive/folders/14zM9WD_HS4g36Z6DZb10hOpJo8kyTIqK?usp=sharing" },
-    { key:"Shreyashi", name:"Shreyashi Banerjee", subject:"Pharmacognosy", icon:"fas fa-microscope", meet:"https://meet.google.com/soi-kaoi-tgc", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVKHO-jjxOP1I5rBVDqdz3-r", notes:"https://drive.google.com/drive/folders/1uvx2VotFY-xOUD3aV1vydHEjJQptTVeN?usp=sharing" },
-    { key:"Hardik", name:"Hardik", subject:"Clinical Research", icon:"fas fa-brain", meet:"https://meet.google.com/fnv-eupf-chx", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLefFgeXRWfRJ15gUqMB4O4", notes:"https://drive.google.com/drive/folders/1jLWiO6EdhdeKs6t_WchfkSQgBV77uXi_?usp=sharing" },
-    { key:"Debjit", name:"Debjit Adak", subject:"Pharmaceutical Chemistry", icon:"fas fa-dna", meet:"https://meet.google.com/tin-tjet-wem", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJoisuxqWsyEwH3UUkMBdu2", notes:"https://drive.google.com/drive/folders/1qF4xXmDJkJeHslkv0lAq0ngy-Scdom6E?usp=sharing" },
-    { key:"Akash", name:"Akash Chandra", subject:"Pharmaceutical Chemistry", icon:"fas fa-atom", meet:"https://meet.google.com/cyt-mznn-oui", playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVISP0Zdxj1Z4ni1oolglB7G", notes:"https://drive.google.com/drive/folders/1qFVBLiovZ5PDMqDpTBebQkma93QBMarl?usp=sharing" },
-    { key:"UpdateSoon", name:"Update Soon!", subject:"Coming soon…", icon:"fas fa-flask", meet:"", playlist:"", notes:"" }
+    { key:"Arijit",     name:"Arijit Bhowmik",    subject:"Pharmaceutics",           icon:"fas fa-prescription-bottle-alt", meet:"https://meet.google.com/fpa-chyp-gfb",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm", notes:"https://drive.google.com/drive/folders/1cx8p_uvdFzEJI13u3IzaMIX8NLqd1n2-?usp=sharing" },
+    { key:"Chyan",      name:"Chyan Dey",          subject:"Pharmaceutics",           icon:"fas fa-book",                    meet:"https://meet.google.com/qvj-aocv-cdp",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLgD6rZAnn84yKHR8f05QiO", notes:"https://drive.google.com/drive/folders/1H2QtL36f6dBU636AxtYwemHVRAt0kyGv?usp=sharing" },
+    { key:"Indrajit",   name:"Indrajit Laha",      subject:"Pharmacology",            icon:"fas fa-heartbeat",               meet:"https://meet.google.com/acs-cxux-smg",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJmU3WWSeu_ifEmypowFGH9", notes:"https://drive.google.com/drive/folders/14zM9WD_HS4g36Z6DZb10hOpJo8kyTIqK?usp=sharing" },
+    { key:"Shreyashi",  name:"Shreyashi Banerjee", subject:"Pharmacognosy",           icon:"fas fa-microscope",              meet:"https://meet.google.com/soi-kaoi-tgc",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVKHO-jjxOP1I5rBVDqdz3-r", notes:"https://drive.google.com/drive/folders/1uvx2VotFY-xOUD3aV1vydHEjJQptTVeN?usp=sharing" },
+    { key:"Hardik",     name:"Hardik",             subject:"Clinical Research",       icon:"fas fa-brain",                   meet:"https://meet.google.com/fnv-eupf-chx",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVLefFgeXRWfRJ15gUqMB4O4", notes:"https://drive.google.com/drive/folders/1jLWiO6EdhdeKs6t_WchfkSQgBV77uXi_?usp=sharing" },
+    { key:"Debjit",     name:"Debjit Adak",        subject:"Pharmaceutical Chemistry",icon:"fas fa-dna",                     meet:"https://meet.google.com/tin-tjet-wem",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJoisuxqWsyEwH3UUkMBdu2", notes:"https://drive.google.com/drive/folders/1qF4xXmDJkJeHslkv0lAq0ngy-Scdom6E?usp=sharing" },
+    { key:"Akash",      name:"Akash Chandra",      subject:"Pharmaceutical Chemistry",icon:"fas fa-atom",                    meet:"https://meet.google.com/cyt-mznn-oui",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVISP0Zdxj1Z4ni1oolglB7G", notes:"https://drive.google.com/drive/folders/1qFVBLiovZ5PDMqDpTBebQkma93QBMarl?usp=sharing" },
+    { key:"UpdateSoon", name:"Update Soon!",       subject:"Coming soon…",            icon:"fas fa-flask",                   meet:"",                                      playlist:"",                                                                          notes:"" }
   ];
 
   let selectedTeacher = null;
 
+  /* ─── TOGGLE PASSWORD VISIBILITY ─── */
+  function togglePassword() {
+    const input = document.getElementById('passwordID');
+    const icon  = document.getElementById('eyeIcon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.className = 'fas fa-eye-slash';
+    } else {
+      input.type = 'password';
+      icon.className = 'fas fa-eye';
+    }
+  }
+
+  /* ─── VERIFY USER ─── */
+  function verifyUser() {
+    const email    = document.getElementById('emailID').value.trim();
+    const password = document.getElementById('passwordID').value;
+    const msgDiv   = document.getElementById('message');
+
+    if (!email) {
+      msgDiv.innerHTML = "Please enter your registered email.";
+      msgDiv.className = "msg error";
+      return;
+    }
+    if (!password) {
+      msgDiv.innerHTML = "Please enter your password.";
+      msgDiv.className = "msg error";
+      return;
+    }
+
+    const isStudent = email in students;
+    const isAdmin   = email in admins;
+
+    if (!isStudent && !isAdmin) {
+      msgDiv.innerHTML = "Email not registered. Contact Admin.";
+      msgDiv.className = "msg error";
+      return;
+    }
+
+    /* Password check */
+    const expectedPass = isAdmin ? ADMIN_PASS : STUDENT_PASS;
+    if (password !== expectedPass) {
+      msgDiv.innerHTML = "Incorrect password. Please try again.";
+      msgDiv.className = "msg error";
+      return;
+    }
+
+    const displayName = isAdmin ? `Admin: ${admins[email]}` : students[email];
+
+    const loginSec = document.getElementById('loginSection');
+    loginSec.style.transition = 'all 0.5s';
+    loginSec.style.opacity    = '0';
+    loginSec.style.transform  = 'translateY(-40px)';
+    setTimeout(() => {
+      loginSec.style.display = 'none';
+      document.getElementById('badgeName').textContent = displayName.replace('Admin: ', '');
+      document.getElementById('userBadge').classList.add('visible');
+      document.getElementById('userName').textContent = displayName;
+      document.getElementById('dashSection').classList.add('visible');
+      renderTeachers();
+    }, 500);
+  }
+
+  /* ─── RENDER TEACHERS ─── */
   function renderTeachers() {
     const grid = document.getElementById('teacherGrid');
     grid.innerHTML = '';
     teachers.forEach(t => {
       const card = document.createElement('div');
-      card.className = 'teacher-card';
-      card.dataset.key = t.key;
-      card.onclick = () => selectTeacher(t.key);
-      const hasContent = !!(t.meet || t.playlist || t.notes);
-      card.innerHTML = `${hasContent ? '<div class="t-badge"></div>' : ''}<div class="t-icon"><i class="${t.icon}"></i></div><div class="t-name">${t.name}</div><div class="t-subject">${t.subject}</div>`;
+      card.className    = 'teacher-card';
+      card.dataset.key  = t.key;
+      card.onclick      = () => selectTeacher(t.key);
+      const hasContent  = !!(t.meet || t.playlist || t.notes);
+      card.innerHTML    = `${hasContent ? '<div class="t-badge"></div>' : ''}<div class="t-icon"><i class="${t.icon}"></i></div><div class="t-name">${t.name}</div><div class="t-subject">${t.subject}</div>`;
       grid.appendChild(card);
     });
   }
 
+  /* ─── SELECT TEACHER ─── */
   function selectTeacher(key) {
     selectedTeacher = teachers.find(t => t.key === key);
     if (!selectedTeacher) return;
     document.querySelectorAll('.teacher-card').forEach(c => c.classList.remove('selected'));
     const target = document.querySelector(`.teacher-card[data-key="${key}"]`);
-    if(target) target.classList.add('selected');
-    document.getElementById('selName').textContent = selectedTeacher.name;
+    if (target) target.classList.add('selected');
+
+    document.getElementById('selName').textContent    = selectedTeacher.name;
     document.getElementById('selSubject').textContent = selectedTeacher.subject;
-    document.getElementById('selAvatar').innerHTML = `<i class="${selectedTeacher.icon}"></i>`;
+    document.getElementById('selAvatar').innerHTML    = `<i class="${selectedTeacher.icon}"></i>`;
+
     const live = document.getElementById('liveBtn');
-    if(selectedTeacher.meet) { live.href = selectedTeacher.meet; live.className = 'panel-cta cta-live'; live.innerHTML = `<i class="fas fa-play-circle"></i> Join Live Class`; }
-    else { live.href = '#'; live.className = 'panel-cta cta-disabled'; live.innerHTML = `<i class="fas fa-clock"></i> Coming Soon`; }
+    if (selectedTeacher.meet) {
+      live.href = selectedTeacher.meet; live.className = 'panel-cta cta-live';
+      live.innerHTML = `<i class="fas fa-play-circle"></i> Join Live Class`;
+    } else {
+      live.href = '#'; live.className = 'panel-cta cta-disabled';
+      live.innerHTML = `<i class="fas fa-clock"></i> Coming Soon`;
+    }
+
     const rec = document.getElementById('recBtn');
-    if(selectedTeacher.playlist) { rec.href = selectedTeacher.playlist; rec.className = 'panel-cta cta-rec'; rec.innerHTML = `<i class="fab fa-youtube"></i> Watch Recordings`; }
-    else { rec.href = '#'; rec.className = 'panel-cta cta-disabled'; rec.innerHTML = `<i class="fas fa-clock"></i> Playlist Soon`; }
+    if (selectedTeacher.playlist) {
+      rec.href = selectedTeacher.playlist; rec.className = 'panel-cta cta-rec';
+      rec.innerHTML = `<i class="fab fa-youtube"></i> Watch Recordings`;
+    } else {
+      rec.href = '#'; rec.className = 'panel-cta cta-disabled';
+      rec.innerHTML = `<i class="fas fa-clock"></i> Playlist Soon`;
+    }
+
     const notes = document.getElementById('notesBtn');
-    if(selectedTeacher.notes && selectedTeacher.notes.trim()) { notes.href = selectedTeacher.notes; notes.className = 'panel-cta cta-notes'; notes.innerHTML = `<i class="fas fa-folder-open"></i> Access Notes`; }
-    else { notes.href = '#'; notes.className = 'panel-cta cta-disabled'; notes.innerHTML = `<i class="fas fa-ban"></i> Notes Unavailable`; }
+    if (selectedTeacher.notes && selectedTeacher.notes.trim()) {
+      notes.href = selectedTeacher.notes; notes.className = 'panel-cta cta-notes';
+      notes.innerHTML = `<i class="fas fa-folder-open"></i> Access Notes`;
+    } else {
+      notes.href = '#'; notes.className = 'panel-cta cta-disabled';
+      notes.innerHTML = `<i class="fas fa-ban"></i> Notes Unavailable`;
+    }
+
     document.getElementById('panelsWrapper').classList.add('active');
-    setTimeout(() => document.getElementById('threePanels')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+    setTimeout(() => document.getElementById('panelsWrapper')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
   }
-  function handleLive(e) { if (!selectedTeacher?.meet) { e.preventDefault(); return false; } return true; }
-  function handleRec(e) { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; }
-  function handleNotes(e) { if (!selectedTeacher?.notes) { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; }
-  function verifyUser() {
-    const email = document.getElementById('emailID').value.trim();
-    const msgDiv = document.getElementById('message');
-    if(!email) { msgDiv.innerHTML = "Please enter registered email"; msgDiv.className = "msg error"; return; }
-    const name = students[email] || (admins[email] ? `Admin: ${admins[email]}` : null);
-    if(name) {
-      const loginSec = document.getElementById('loginSection');
-      loginSec.style.transition = 'all 0.5s';
-      loginSec.style.opacity = '0';
-      loginSec.style.transform = 'translateY(-40px)';
-      setTimeout(() => {
-        loginSec.style.display = 'none';
-        document.getElementById('badgeName').textContent = name.replace('Admin: ','');
-        document.getElementById('userBadge').classList.add('visible');
-        document.getElementById('userName').textContent = name;
-        document.getElementById('dashSection').classList.add('visible');
-        renderTeachers();
-      }, 500);
-    } else { msgDiv.innerHTML = "Email not registered. Contact Admin."; msgDiv.className = "msg error"; }
-  }
-  window.addEventListener('scroll', () => { const btn = document.getElementById('scrollTopBtn'); if(window.scrollY > 400) btn.classList.add('visible'); else btn.classList.remove('visible'); });
+
+  function handleLive(e)  { if (!selectedTeacher?.meet)     { e.preventDefault(); return false; } return true; }
+  function handleRec(e)   { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; }
+  function handleNotes(e) { if (!selectedTeacher?.notes)    { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; }
+
+  /* ─── SCROLL TOP ─── */
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  /* ─── PARTICLES ─── */
   (function createParticles() {
     const container = document.getElementById('particles');
-    for(let i=0;i<45;i++){ const p=document.createElement('div'); p.className='particle'; const s=Math.random()*5+2; const drift=(Math.random()-0.5)*70; p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:0;--drift:${drift}px;animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s;`; container.appendChild(p); }
+    for (let i = 0; i < 45; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const s = Math.random() * 5 + 2;
+      const drift = (Math.random() - 0.5) * 70;
+      p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:0;--drift:${drift}px;animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s;`;
+      container.appendChild(p);
+    }
   })();
-  document.getElementById('emailID')?.addEventListener('keydown', e => { if(e.key === 'Enter') verifyUser(); });
+
+  /* ─── ENTER KEY ─── */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('loginSection').style.display !== 'none') {
+      verifyUser();
+    }
+  });
 </script>
 </body>
 </html>
