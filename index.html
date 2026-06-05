@@ -300,7 +300,6 @@
       box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
     }
 
-    /* Password wrapper with eye toggle */
     .password-wrapper {
       position: relative;
     }
@@ -376,7 +375,7 @@
       text-align: center;
     }
 
-    /* === DASHBOARD === */
+    /* === DASHBOARD (CMS) === */
     #dashSection {
       display: none;
       width: 100%;
@@ -754,6 +753,192 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
+    /* === GOV PHARMACIST EXAM SECTION === */
+    #govSection {
+      display: none;
+      width: 100%;
+      max-width: 1300px;
+    }
+
+    #govSection.visible {
+      display: block;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .gov-banner {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .gov-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(212, 168, 67, 0.1);
+      border: 1px solid rgba(212, 168, 67, 0.4);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: #d4a843;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .gov-title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e9a38c, #d4a843, #f5c842);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0.5rem 0;
+    }
+
+    .gov-subtitle {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.95rem;
+      color: rgba(255, 245, 225, 0.55);
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
+    }
+
+    /* Subject playlist grid */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1rem;
+    }
+
+    .subject-card {
+      background: rgba(10, 5, 5, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 168, 67, 0.25);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: all 0.38s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      position: relative;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 168, 67, 0.65);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .subject-card-header {
+      padding: 1.4rem 1.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .subj-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .subj-name {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFF5E1;
+      line-height: 1.3;
+    }
+
+    .subj-meta {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.75rem;
+      color: rgba(255, 245, 225, 0.45);
+      margin-top: 0.2rem;
+    }
+
+    .subject-card-body {
+      padding: 0 1.5rem 1.4rem;
+    }
+
+    .subj-desc {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.82rem;
+      color: rgba(255, 245, 225, 0.5);
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 0.9rem;
+    }
+
+    .subj-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 40px;
+      border: none;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      color: white;
+    }
+
+    .subj-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .subj-btn.disabled {
+      background: rgba(80,80,80,0.35);
+      color: rgba(255,245,225,0.35);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* color themes per subject */
+    .theme-red    .subj-icon { background: rgba(139,0,0,0.4); color: #ff9090; }
+    .theme-red    .subj-btn  { background: linear-gradient(135deg, #8B0000, #c0392b); }
+    .theme-red    .subject-card-header { border-bottom: none; }
+
+    .theme-blue   .subj-icon { background: rgba(20,60,140,0.45); color: #88aaff; }
+    .theme-blue   .subj-btn  { background: linear-gradient(135deg, #1a3a7c, #2255cc); }
+
+    .theme-green  .subj-icon { background: rgba(20,80,20,0.45); color: #aaffaa; }
+    .theme-green  .subj-btn  { background: linear-gradient(135deg, #1a5a1a, #3e9e3e); }
+
+    .theme-purple .subj-icon { background: rgba(80,0,120,0.45); color: #cc88ff; }
+    .theme-purple .subj-btn  { background: linear-gradient(135deg, #5a0090, #9b30cc); }
+
+    .theme-amber  .subj-icon { background: rgba(140,90,0,0.45); color: #ffd080; }
+    .theme-amber  .subj-btn  { background: linear-gradient(135deg, #8a5500, #c97d00); }
+
+    .theme-teal   .subj-icon { background: rgba(0,100,100,0.45); color: #80ffee; }
+    .theme-teal   .subj-btn  { background: linear-gradient(135deg, #006060, #009988); }
+
+    .theme-rose   .subj-icon { background: rgba(140,0,70,0.45); color: #ff90cc; }
+    .theme-rose   .subj-btn  { background: linear-gradient(135deg, #8a0044, #cc2277); }
+
+    .theme-slate  .subj-icon { background: rgba(50,70,100,0.45); color: #b0c8ee; }
+    .theme-slate  .subj-btn  { background: linear-gradient(135deg, #2a3d60, #4a6090); }
+
+    .theme-orange .subj-icon { background: rgba(150,60,0,0.45); color: #ffb060; }
+    .theme-orange .subj-btn  { background: linear-gradient(135deg, #8a3800, #cc6000); }
+
+    .theme-indigo .subj-icon { background: rgba(50,0,130,0.45); color: #a080ff; }
+    .theme-indigo .subj-btn  { background: linear-gradient(135deg, #2a006a, #6030bb); }
+
     /* Scroll Top */
     .scroll-top {
       position: fixed;
@@ -792,15 +977,18 @@
     @media (max-width: 900px) {
       .three-panels { grid-template-columns: 1fr; gap: 1.2rem; }
       .teacher-grid { grid-template-columns: repeat(2, 1fr); }
+      .subject-grid { grid-template-columns: repeat(2, 1fr); }
       .header { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0.8rem; }
       .brand-name { font-size: 1.3rem; }
       .login-card { padding: 2rem 1.5rem; margin: 1rem; }
       .login-title { font-size: 1.6rem; }
       .uname { font-size: 1.8rem; }
+      .gov-title { font-size: 1.7rem; }
     }
 
     @media (max-width: 550px) {
       .teacher-grid { grid-template-columns: 1fr; }
+      .subject-grid { grid-template-columns: 1fr; }
       .selected-teacher-info { width: 90%; }
     }
   </style>
@@ -824,7 +1012,7 @@
       </div>
     </div>
     <div class="header-center">
-      <div class="header-title">Class Management System (CMS)</div>
+      <div class="header-title" id="headerTitle">Class Management System (CMS)</div>
     </div>
     <div class="header-right">
       <div class="user-badge" id="userBadge">
@@ -835,7 +1023,8 @@
   </header>
 
   <main class="main">
-    <!-- LOGIN SECTION -->
+
+    <!-- ══════════════ LOGIN SECTION ══════════════ -->
     <div id="loginSection">
       <div class="login-card">
         <div class="login-emblem-icon"><i class="fas fa-crown"></i></div>
@@ -862,7 +1051,7 @@
       </div>
     </div>
 
-    <!-- DASHBOARD SECTION -->
+    <!-- ══════════════ CMS DASHBOARD SECTION ══════════════ -->
     <div id="dashSection">
       <div class="welcome-banner">
         <div class="greeting">Welcome Back</div>
@@ -933,6 +1122,20 @@
         </div>
       </div>
     </div>
+
+    <!-- ══════════════ GOVERNMENT PHARMACIST EXAM SECTION ══════════════ -->
+    <div id="govSection">
+      <div class="gov-banner">
+        <div class="gov-badge"><i class="fas fa-landmark"></i> Class Management System (CMS)</div>
+        <div class="uname" id="govUserName">—</div>
+        <div class="divider"></div>
+        <div class="gov-subtitle">Subject-wise Recorded Videos for Government Pharmacist Exam Preparation</div>
+      </div>
+
+      <div class="section-label"><i class="fab fa-youtube"></i> Subject-Wise Playlists</div>
+      <div class="subject-grid" id="subjectGrid"></div>
+    </div>
+
   </main>
 
   <footer class="footer">
@@ -946,8 +1149,9 @@
   /* ─── PASSWORDS ─── */
   const STUDENT_PASS = "ggs123";
   const ADMIN_PASS   = "gga123";
+  const GOV_PASS     = "ggp123";
 
-  /* ─── STUDENT LIST ─── */
+  /* ─── STUDENT LIST (GPAT/NIPER/CUET-PG) ─── */
   const students = {
     "akashchandra1611@gmail.com":"Akash Chandra",
     "upen978kumar983@gmail.com":"Upendra Kumar",
@@ -1024,6 +1228,17 @@
     "sudeshnachandra2002@gmail.com":"Akash"
   };
 
+  /* ─── GOV PHARMACIST EXAM LIST ─── */
+  const govStudents = {
+    "akashchandra1611@gmail.com":"Akash",
+    "arijitbhowmik1602@gmail.com":"Arijit",
+    "indrajitlaha9564@gmail.com":"Indrajit",
+    "banerjeeshreyashi05@gmail.com":"Shreyashi",
+    "hardikpruthi22@gmail.com":"Hardik",
+    "debjitadak97@gmail.com":"Debjit",
+    /* Add more gov exam registered emails here */
+  };
+
   /* ─── TEACHERS ─── */
   const teachers = [
     { key:"Arijit",     name:"Arijit Bhowmik",    subject:"Pharmaceutics",           icon:"fas fa-prescription-bottle-alt", meet:"https://meet.google.com/fpa-chyp-gfb",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm", notes:"https://drive.google.com/drive/folders/1cx8p_uvdFzEJI13u3IzaMIX8NLqd1n2-?usp=sharing" },
@@ -1034,6 +1249,91 @@
     { key:"Debjit",     name:"Debjit Adak",        subject:"Pharmaceutical Chemistry",icon:"fas fa-dna",                     meet:"https://meet.google.com/tin-tjet-wem",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVJoisuxqWsyEwH3UUkMBdu2", notes:"https://drive.google.com/drive/folders/1qF4xXmDJkJeHslkv0lAq0ngy-Scdom6E?usp=sharing" },
     { key:"Akash",      name:"Akash Chandra",      subject:"Pharmaceutical Chemistry",icon:"fas fa-atom",                    meet:"https://meet.google.com/cyt-mznn-oui",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVISP0Zdxj1Z4ni1oolglB7G", notes:"https://drive.google.com/drive/folders/1qFVBLiovZ5PDMqDpTBebQkma93QBMarl?usp=sharing" },
     { key:"UpdateSoon", name:"Update Soon!",       subject:"Coming soon…",            icon:"fas fa-flask",                   meet:"",                                      playlist:"",                                                                          notes:"" }
+  ];
+
+  /* ─── GOV EXAM SUBJECTS ─── */
+  /* Add/update playlist URLs below for each subject */
+  const govSubjects = [
+    {
+      name: "Pharmaceutics",
+      meta: "Unit operations, Dosage forms, Sterilization",
+      desc: "Covers all major Pharmaceutics topics relevant to government pharmacist exams.",
+      icon: "fas fa-prescription-bottle-alt",
+      theme: "theme-red",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Pharmaceutical Chemistry",
+      meta: "Organic, Inorganic & Medicinal Chemistry",
+      desc: "Complete Pharmaceutical Chemistry playlist for exam preparation.",
+      icon: "fas fa-atom",
+      theme: "theme-blue",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Pharmacology",
+      meta: "Drug actions, Pharmacokinetics, Toxicology",
+      desc: "Pharmacology concepts and drug classifications for government exams.",
+      icon: "fas fa-heartbeat",
+      theme: "theme-green",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Pharmacognosy",
+      meta: "Natural products, Plant drugs, Crude drugs",
+      desc: "Pharmacognosy playlist covering all exam-relevant natural drug topics.",
+      icon: "fas fa-seedling",
+      theme: "theme-purple",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Biochemistry",
+      meta: "Metabolic pathways, Enzymes, Vitamins",
+      desc: "Biochemistry fundamentals tailored to pharmacist competitive exams.",
+      icon: "fas fa-dna",
+      theme: "theme-teal",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Pathophysiology",
+      meta: "Disease mechanisms, Clinical concepts",
+      desc: "Pathophysiology topics commonly appearing in government pharmacist exams.",
+      icon: "fas fa-lungs",
+      theme: "theme-rose",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Hospital & Clinical Pharmacy",
+      meta: "Patient care, Drug information, DRP",
+      desc: "Hospital pharmacy practice and clinical pharmacy exam topics.",
+      icon: "fas fa-hospital",
+      theme: "theme-amber",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Pharmaceutical Jurisprudence",
+      meta: "Drug laws, Acts & Regulations",
+      desc: "All key pharmacy acts, laws and regulations for government exams.",
+      icon: "fas fa-scale-balanced",
+      theme: "theme-slate",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Microbiology",
+      meta: "Bacteria, Viruses, Sterilization",
+      desc: "Microbiology and immunology topics for pharmacist exam preparation.",
+      icon: "fas fa-biohazard",
+      theme: "theme-orange",
+      playlist: "" /* Add YouTube playlist URL */
+    },
+    {
+      name: "Anatomy & Physiology",
+      meta: "Human body systems and functions",
+      desc: "Anatomy and physiology playlist for government pharmacist aspirants.",
+      icon: "fas fa-person",
+      theme: "theme-indigo",
+      playlist: "" /* Add YouTube playlist URL */
+    },
   ];
 
   let selectedTeacher = null;
@@ -1070,34 +1370,63 @@
 
     const isStudent = email in students;
     const isAdmin   = email in admins;
+    const isGov     = email in govStudents;
 
-    if (!isStudent && !isAdmin) {
+    if (!isStudent && !isAdmin && !isGov) {
       msgDiv.innerHTML = "Email not registered. Contact Admin.";
       msgDiv.className = "msg error";
       return;
     }
 
     /* Password check */
-    const expectedPass = isAdmin ? ADMIN_PASS : STUDENT_PASS;
+    let expectedPass;
+    if (isAdmin)   expectedPass = ADMIN_PASS;
+    else if (isGov) expectedPass = GOV_PASS;
+    else           expectedPass = STUDENT_PASS;
+
     if (password !== expectedPass) {
       msgDiv.innerHTML = "Incorrect password. Please try again.";
       msgDiv.className = "msg error";
       return;
     }
 
-    const displayName = isAdmin ? `Admin: ${admins[email]}` : students[email];
+    /* Determine display name & destination */
+    let displayName;
+    let destination; /* 'cms' or 'gov' */
 
+    if (isAdmin) {
+      displayName = `Admin: ${admins[email]}`;
+      destination = 'cms';
+    } else if (isGov) {
+      displayName = govStudents[email];
+      destination = 'gov';
+    } else {
+      displayName = students[email];
+      destination = 'cms';
+    }
+
+    /* Animate login out */
     const loginSec = document.getElementById('loginSection');
     loginSec.style.transition = 'all 0.5s';
     loginSec.style.opacity    = '0';
     loginSec.style.transform  = 'translateY(-40px)';
+
     setTimeout(() => {
       loginSec.style.display = 'none';
       document.getElementById('badgeName').textContent = displayName.replace('Admin: ', '');
       document.getElementById('userBadge').classList.add('visible');
-      document.getElementById('userName').textContent = displayName;
-      document.getElementById('dashSection').classList.add('visible');
-      renderTeachers();
+
+      if (destination === 'gov') {
+        document.getElementById('headerTitle').textContent = 'Government Pharmacist Exam';
+        document.getElementById('govUserName').textContent = displayName;
+        document.getElementById('govSection').classList.add('visible');
+        renderGovSubjects();
+      } else {
+        document.getElementById('headerTitle').textContent = 'Class Management System (CMS)';
+        document.getElementById('userName').textContent = displayName;
+        document.getElementById('dashSection').classList.add('visible');
+        renderTeachers();
+      }
     }, 500);
   }
 
@@ -1162,6 +1491,34 @@
   function handleLive(e)  { if (!selectedTeacher?.meet)     { e.preventDefault(); return false; } return true; }
   function handleRec(e)   { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; }
   function handleNotes(e) { if (!selectedTeacher?.notes)    { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; }
+
+  /* ─── RENDER GOV SUBJECTS ─── */
+  function renderGovSubjects() {
+    const grid = document.getElementById('subjectGrid');
+    grid.innerHTML = '';
+    govSubjects.forEach(s => {
+      const hasPlaylist = !!(s.playlist && s.playlist.trim());
+      const card = document.createElement('div');
+      card.className = `subject-card ${s.theme}`;
+      card.innerHTML = `
+        <div class="subject-card-header">
+          <div class="subj-icon"><i class="${s.icon}"></i></div>
+          <div>
+            <div class="subj-name">${s.name}</div>
+            <div class="subj-meta">${s.meta}</div>
+          </div>
+        </div>
+        <div class="subject-card-body">
+          <div class="subj-desc">${s.desc}</div>
+          ${hasPlaylist
+            ? `<a href="${s.playlist}" target="_blank" class="subj-btn"><i class="fab fa-youtube"></i> Watch Playlist</a>`
+            : `<button class="subj-btn disabled"><i class="fas fa-clock"></i> Playlist Coming Soon</button>`
+          }
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
 
   /* ─── SCROLL TOP ─── */
   window.addEventListener('scroll', () => {
