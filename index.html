@@ -1067,7 +1067,7 @@
         <div class="schedule-card">
           <div class="schedule-img-wrapper">
             <div class="schedule-placeholder" id="schedulePlaceholder">
-              <span style="font-size:0.8rem; opacity:1.0;"><img src="schedule.jpg" alt="Class Schedule"></span>
+              <img src="schedule.jpg" alt="Class Schedule" style="max-width:100%; border-radius:12px;">
             </div>
           </div>
         </div>
@@ -1237,7 +1237,6 @@
     "banerjeeshreyashi05@gmail.com":"Shreyashi",
     "hardikpruthi22@gmail.com":"Hardik",
     "debjitadak97@gmail.com":"Debjit",
-    /* Add more gov exam registered emails here */
   };
 
   /* ─── TEACHERS ─── */
@@ -1253,94 +1252,23 @@
   ];
 
   /* ─── GOV EXAM SUBJECTS ─── */
-  /* Add/update playlist URLs below for each subject */
   const govSubjects = [
-    {
-      name: "Pharmaceutics",
-      meta: "Unit operations, Dosage forms, Sterilization",
-      desc: "Covers all major Pharmaceutics topics relevant to government pharmacist exams.",
-      icon: "fas fa-prescription-bottle-alt",
-      theme: "theme-red",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Pharmaceutical Chemistry",
-      meta: "Organic, Inorganic & Medicinal Chemistry",
-      desc: "Complete Pharmaceutical Chemistry playlist for exam preparation.",
-      icon: "fas fa-atom",
-      theme: "theme-blue",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Pharmacology",
-      meta: "Drug actions, Pharmacokinetics, Toxicology",
-      desc: "Pharmacology concepts and drug classifications for government exams.",
-      icon: "fas fa-heartbeat",
-      theme: "theme-green",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Pharmacognosy",
-      meta: "Natural products, Plant drugs, Crude drugs",
-      desc: "Pharmacognosy playlist covering all exam-relevant natural drug topics.",
-      icon: "fas fa-seedling",
-      theme: "theme-purple",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Biochemistry",
-      meta: "Metabolic pathways, Enzymes, Vitamins",
-      desc: "Biochemistry fundamentals tailored to pharmacist competitive exams.",
-      icon: "fas fa-dna",
-      theme: "theme-teal",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Pathophysiology",
-      meta: "Disease mechanisms, Clinical concepts",
-      desc: "Pathophysiology topics commonly appearing in government pharmacist exams.",
-      icon: "fas fa-lungs",
-      theme: "theme-rose",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Hospital & Clinical Pharmacy",
-      meta: "Patient care, Drug information, DRP",
-      desc: "Hospital pharmacy practice and clinical pharmacy exam topics.",
-      icon: "fas fa-hospital",
-      theme: "theme-amber",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Pharmaceutical Jurisprudence",
-      meta: "Drug laws, Acts & Regulations",
-      desc: "All key pharmacy acts, laws and regulations for government exams.",
-      icon: "fas fa-scale-balanced",
-      theme: "theme-slate",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Microbiology",
-      meta: "Bacteria, Viruses, Sterilization",
-      desc: "Microbiology and immunology topics for pharmacist exam preparation.",
-      icon: "fas fa-biohazard",
-      theme: "theme-orange",
-      playlist: "" /* Add YouTube playlist URL */
-    },
-    {
-      name: "Anatomy & Physiology",
-      meta: "Human body systems and functions",
-      desc: "Anatomy and physiology playlist for government pharmacist aspirants.",
-      icon: "fas fa-person",
-      theme: "theme-indigo",
-      playlist: "" /* Add YouTube playlist URL */
-    },
+    { name: "Pharmaceutics", meta: "Unit operations, Dosage forms, Sterilization", desc: "Covers all major Pharmaceutics topics relevant to government pharmacist exams.", icon: "fas fa-prescription-bottle-alt", theme: "theme-red", playlist: "" },
+    { name: "Pharmaceutical Chemistry", meta: "Organic, Inorganic & Medicinal Chemistry", desc: "Complete Pharmaceutical Chemistry playlist for exam preparation.", icon: "fas fa-atom", theme: "theme-blue", playlist: "" },
+    { name: "Pharmacology", meta: "Drug actions, Pharmacokinetics, Toxicology", desc: "Pharmacology concepts and drug classifications for government exams.", icon: "fas fa-heartbeat", theme: "theme-green", playlist: "" },
+    { name: "Pharmacognosy", meta: "Natural products, Plant drugs, Crude drugs", desc: "Pharmacognosy playlist covering all exam-relevant natural drug topics.", icon: "fas fa-seedling", theme: "theme-purple", playlist: "" },
+    { name: "Biochemistry", meta: "Metabolic pathways, Enzymes, Vitamins", desc: "Biochemistry fundamentals tailored to pharmacist competitive exams.", icon: "fas fa-dna", theme: "theme-teal", playlist: "" },
+    { name: "Pathophysiology", meta: "Disease mechanisms, Clinical concepts", desc: "Pathophysiology topics commonly appearing in government pharmacist exams.", icon: "fas fa-lungs", theme: "theme-rose", playlist: "" },
+    { name: "Hospital & Clinical Pharmacy", meta: "Patient care, Drug information, DRP", desc: "Hospital pharmacy practice and clinical pharmacy exam topics.", icon: "fas fa-hospital", theme: "theme-amber", playlist: "" },
+    { name: "Pharmaceutical Jurisprudence", meta: "Drug laws, Acts & Regulations", desc: "All key pharmacy acts, laws and regulations for government exams.", icon: "fas fa-scale-balanced", theme: "theme-slate", playlist: "" },
+    { name: "Microbiology", meta: "Bacteria, Viruses, Sterilization", desc: "Microbiology and immunology topics for pharmacist exam preparation.", icon: "fas fa-biohazard", theme: "theme-orange", playlist: "" },
+    { name: "Anatomy & Physiology", meta: "Human body systems and functions", desc: "Anatomy and physiology playlist for government pharmacist aspirants.", icon: "fas fa-person", theme: "theme-indigo", playlist: "" },
   ];
 
   let selectedTeacher = null;
 
   /* ─── TOGGLE PASSWORD VISIBILITY ─── */
-  function togglePassword() {
+  window.togglePassword = function() {
     const input = document.getElementById('passwordID');
     const icon  = document.getElementById('eyeIcon');
     if (input.type === 'password') {
@@ -1350,67 +1278,71 @@
       input.type = 'password';
       icon.className = 'fas fa-eye';
     }
-  }
+  };
 
   /* ─── VERIFY USER ─── */
-  function verifyUser() {
-    const email    = document.getElementById('emailID').value.trim();
+  window.verifyUser = function() {
+    const email = document.getElementById('emailID').value.trim();
     const password = document.getElementById('passwordID').value;
-    const msgDiv   = document.getElementById('message');
+    const msgDiv = document.getElementById('message');
 
     if (!email) {
       msgDiv.innerHTML = "Please enter your registered email.";
       msgDiv.className = "msg error";
       return;
     }
+
     if (!password) {
       msgDiv.innerHTML = "Please enter your password.";
       msgDiv.className = "msg error";
       return;
     }
 
-    const isStudent = email in students;
-    const isAdmin   = email in admins;
-    const isGov     = email in govStudents;
-
-    if (!isStudent && !isAdmin && !isGov) {
-      msgDiv.innerHTML = "Email not registered. Contact Admin.";
-      msgDiv.className = "msg error";
-      return;
-    }
-
-    /* Password check */
-    let expectedPass;
-    if (isAdmin)   expectedPass = ADMIN_PASS;
-    else if (isGov) expectedPass = GOV_PASS;
-    else           expectedPass = STUDENT_PASS;
-
-    if (password !== expectedPass) {
-      msgDiv.innerHTML = "Incorrect password. Please try again.";
-      msgDiv.className = "msg error";
-      return;
-    }
-
-    /* Determine display name & destination */
     let displayName;
-    let destination; /* 'cms' or 'gov' */
+    let destination;
 
-    if (isAdmin) {
+    /* ADMIN LOGIN */
+    if (password === ADMIN_PASS) {
+      if (!(email in admins)) {
+        msgDiv.innerHTML = "Email ID not registered. Contact Admin";
+        msgDiv.className = "msg error";
+        return;
+      }
       displayName = `Admin: ${admins[email]}`;
-      destination = 'cms';
-    } else if (isGov) {
+      destination = "cms";
+    }
+    /* GOV PHARMACIST LOGIN */
+    else if (password === GOV_PASS) {
+      if (!(email in govStudents)) {
+        msgDiv.innerHTML = "Email ID not registered. Contact Admin";
+        msgDiv.className = "msg error";
+        return;
+      }
       displayName = govStudents[email];
-      destination = 'gov';
-    } else {
+      destination = "gov";
+    }
+    /* STUDENT LOGIN */
+    else if (password === STUDENT_PASS) {
+      if (!(email in students)) {
+        msgDiv.innerHTML = "Email ID not registered. Contact Admin";
+        msgDiv.className = "msg error";
+        return;
+      }
       displayName = students[email];
-      destination = 'cms';
+      destination = "cms";
+    }
+    /* WRONG PASSWORD */
+    else {
+      msgDiv.innerHTML = "Incorrect password.";
+      msgDiv.className = "msg error";
+      return;
     }
 
-    /* Animate login out */
+    /* LOGIN ANIMATION */
     const loginSec = document.getElementById('loginSection');
     loginSec.style.transition = 'all 0.5s';
-    loginSec.style.opacity    = '0';
-    loginSec.style.transform  = 'translateY(-40px)';
+    loginSec.style.opacity = '0';
+    loginSec.style.transform = 'translateY(-40px)';
 
     setTimeout(() => {
       loginSec.style.display = 'none';
@@ -1429,7 +1361,7 @@
         renderTeachers();
       }
     }, 500);
-  }
+  };
 
   /* ─── RENDER TEACHERS ─── */
   function renderTeachers() {
@@ -1489,9 +1421,9 @@
     setTimeout(() => document.getElementById('panelsWrapper')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
   }
 
-  function handleLive(e)  { if (!selectedTeacher?.meet)     { e.preventDefault(); return false; } return true; }
-  function handleRec(e)   { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; }
-  function handleNotes(e) { if (!selectedTeacher?.notes)    { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; }
+  window.handleLive = function(e)  { if (!selectedTeacher?.meet)     { e.preventDefault(); return false; } return true; };
+  window.handleRec = function(e)   { if (!selectedTeacher?.playlist) { e.preventDefault(); return false; } return true; };
+  window.handleNotes = function(e) { if (!selectedTeacher?.notes)    { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; };
 
   /* ─── RENDER GOV SUBJECTS ─── */
   function renderGovSubjects() {
@@ -1535,8 +1467,7 @@
       const p = document.createElement('div');
       p.className = 'particle';
       const s = Math.random() * 5 + 2;
-      const drift = (Math.random() - 0.5) * 70;
-      p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:0;--drift:${drift}px;animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s;`;
+      p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:0;animation-duration:${Math.random()*18+12}s;animation-delay:${Math.random()*12}s;`;
       container.appendChild(p);
     }
   })();
