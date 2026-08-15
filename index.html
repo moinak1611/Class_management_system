@@ -940,6 +940,67 @@
     .theme-indigo .subj-icon { background: rgba(50,0,130,0.45); color: #a080ff; }
     .theme-indigo .subj-btn  { background: linear-gradient(135deg, #2a006a, #6030bb); }
 
+    /* === GATE CHEMISTRY SECTION === */
+    #gateSection {
+      display: none;
+      width: 100%;
+      max-width: 1300px;
+    }
+
+    #gateSection.visible {
+      display: block;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .gate-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(80, 0, 120, 0.12);
+      border: 1px solid rgba(160, 128, 255, 0.4);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: #cc88ff;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* Reuse teacher-card visuals but with a violet accent for GATE Chemistry */
+    #gateTeacherGrid .teacher-card:hover {
+      border-color: #a080ff;
+      background: rgba(80, 0, 120, 0.18);
+    }
+
+    #gateTeacherGrid .teacher-card.selected {
+      border-color: #a080ff;
+      background: rgba(80, 0, 120, 0.28);
+      box-shadow: 0 0 30px rgba(160, 128, 255, 0.25);
+    }
+
+    #gateTeacherGrid .t-icon {
+      background: rgba(80, 0, 120, 0.4);
+      color: #cc88ff;
+    }
+
+    #gateTeacherGrid .teacher-card:hover .t-icon {
+      background: rgba(160, 128, 255, 0.2);
+    }
+
+    #gatePanelsWrapper .sel-avatar {
+      background: linear-gradient(135deg, #5a0090, #2a0050);
+      color: #cc88ff;
+      border: 1px solid rgba(160, 128, 255, 0.5);
+    }
+
+    /* GATE Chemistry panel accent (violet, distinct from CMS red/blue/green) */
+    #gatePanelsWrapper .panel-live .panel-header { background: linear-gradient(135deg, #5a0090, #2a0050); }
+    #gatePanelsWrapper .panel-live { border: 1px solid rgba(160, 128, 255, 0.5); }
+    #gatePanelsWrapper .panel-live .panel-icon-wrap { background: rgba(160, 128, 255, 0.2); color: #cc88ff; }
+    #gatePanelsWrapper .panel-live .panel-type-name { color: #d8b8ff; }
+    #gatePanelsWrapper .cta-live { background: linear-gradient(135deg, #5a0090, #9b30cc); }
+
     /* Scroll Top */
     .scroll-top {
       position: fixed;
@@ -1137,6 +1198,78 @@
       <div class="subject-grid" id="subjectGrid"></div>
     </div>
 
+    <!-- ══════════════ GATE CHEMISTRY SECTION ══════════════ -->
+    <div id="gateSection">
+      <div class="welcome-banner">
+        <div class="gate-badge"><i class="fas fa-vial-circle-check"></i>GATE Chemistry</div>
+        <div class="uname" id="gateUserName">—</div>
+        <div class="divider"></div>
+        <div class="subtitle" style="color:rgba(255,245,225,0.6);">Select your educator to access live sessions, recordings &amp; notes</div>
+      </div>
+
+      <!-- CLASS SCHEDULE -->
+      <div class="schedule-section">
+        <div class="section-label"><i class="fas fa-calendar-days"></i> Class Schedule</div>
+        <div class="schedule-card">
+          <div class="schedule-img-wrapper">
+            <div class="schedule-placeholder" id="gateSchedulePlaceholder">
+              <img src="gate-schedule.jpg" alt="GATE Chemistry Class Schedule" style="max-width:100%; border-radius:12px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATOR SELECTION -->
+      <div class="section-label"><i class="fas fa-chalkboard-user"></i> Choose Your Educator</div>
+      <div class="teacher-grid" id="gateTeacherGrid"></div>
+
+      <div class="panels-wrapper" id="gatePanelsWrapper">
+        <div class="selected-teacher-info" id="gateSelTeacherInfo">
+          <div class="sel-avatar" id="gateSelAvatar"><i class="fas fa-user-graduate"></i></div>
+          <div>
+            <div class="sel-name" id="gateSelName">—</div>
+            <div class="sel-subject" id="gateSelSubject" style="font-size:0.75rem; color:rgba(255,245,225,0.5);">—</div>
+          </div>
+        </div>
+        <div class="three-panels">
+          <div class="panel panel-live">
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fas fa-video"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Live Class</div><div class="panel-desc">Interactive Google Meet</div></div>
+              <div class="live-indicator"><div class="live-dot"></div> LIVE</div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fas fa-circle-dot"></i> Real-time mentoring</div>
+              <div class="info-row"><i class="fas fa-comments"></i> Q&amp;A Discussions</div>
+              <a id="gateLiveBtn" href="#" class="panel-cta cta-live" target="_blank" onclick="return handleGateLive(event)"><i class="fas fa-play-circle"></i> Join Live Class</a>
+            </div>
+          </div>
+          <div class="panel panel-rec">
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fab fa-youtube"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Recorded Videos</div><div class="panel-desc">YouTube Playlists</div></div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fas fa-clock-rotate-left"></i> Self-paced learning</div>
+              <div class="info-row"><i class="fas fa-infinity"></i> Unlimited access</div>
+              <a id="gateRecBtn" href="#" class="panel-cta cta-rec" target="_blank" onclick="return handleGateRec(event)"><i class="fab fa-youtube"></i> Watch Recordings</a>
+            </div>
+          </div>
+          <div class="panel panel-notes">
+            <div class="panel-header">
+              <div class="panel-icon-wrap"><i class="fas fa-pen-fancy"></i></div>
+              <div class="panel-title-area"><div class="panel-type-name">Class Notes</div><div class="panel-desc">Google Drive Resources</div></div>
+            </div>
+            <div class="panel-body">
+              <div class="info-row"><i class="fab fa-google-drive"></i> PDFs, Slides, Handouts</div>
+              <div class="info-row"><i class="fas fa-download"></i> Download &amp; Revise</div>
+              <a id="gateNotesBtn" href="#" class="panel-cta cta-notes" target="_blank" onclick="return handleGateNotes(event)"><i class="fas fa-folder-open"></i> Access Notes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer class="footer">
@@ -1151,6 +1284,8 @@
   const STUDENT_PASS = "ggs123";
   const ADMIN_PASS   = "gga123";
   const GOV_PASS     = "ggp123";
+  const GATE_ADMIN_PASS   = "gca123";
+  const GATE_STUDENT_PASS = "gcs123";
 
   /* ─── STUDENT LIST (GPAT/NIPER/CUET-PG) ─── */
   const students = {
@@ -1201,6 +1336,24 @@
     "sumantaki2003@gmail.com":"Suman Ghosh",
   };
 
+  /* ─── GATE CHEMISTRY ADMIN LIST ───
+     TODO: replace/add the real admin emails for GATE Chemistry below. */
+  const gateAdmins = {
+    "sudeshnachandra2002@gmail.com":"Akash",
+    "arijitbhowmik1602@gmail.com":"Arijit",
+    "indrajitlaha9564@gmail.com":"Indrajit",
+    "banerjeeshreyashi05@gmail.com":"Shreyashi",
+    "hardikpruthi22@gmail.com":"Hardik",
+    "debjitadak97@gmail.com":"Debjit",
+  };
+
+  /* ─── GATE CHEMISTRY STUDENT LIST ───
+     TODO: replace/add the real registered emails for GATE Chemistry aspirants below. */
+  const gateStudents = {
+    "":"",
+    "":"",
+  };
+
   /* ─── TEACHERS ─── */
   const teachers = [
     { key:"Arijit",     name:"Arijit Bhowmik",     subject:"Pharmaceutics",           icon:"fas fa-prescription-bottle-alt", meet:"https://meet.google.com/fpa-chyp-gfb",  playlist:"https://www.youtube.com/playlist?list=PLAlXTa_uWTVIbU3OmERT5Brovu7AwK5hm", notes:"https://drive.google.com/drive/folders/1cx8p_uvdFzEJI13u3IzaMIX8NLqd1n2-?usp=sharing" },
@@ -1228,7 +1381,14 @@
     { name: "Non-Pharma", meta: "Mathematics, English, Reasoning", desc: "Complete preparation for non-pharma section", icon: "fas fa-graduation-cap", theme: "theme-green", playlist: "https://www.youtube.com/playlist?list=PLAZw8MZ1xRuw" },
   ];
 
+  /* ─── GATE CHEMISTRY EDUCATORS ───
+     TODO: fill in real names/subjects/links as educators are assigned. */
+  const gateTeachers = [
+    { key:"GateUpdateSoon", name:"Update Soon!", subject:"Coming soon…", icon:"fas fa-flask-vial", meet:"", playlist:"", notes:"" }
+  ];
+
   let selectedTeacher = null;
+  let selectedGateTeacher = null;
 
   /* ─── TOGGLE PASSWORD VISIBILITY ─── */
   window.togglePassword = function() {
@@ -1284,6 +1444,26 @@
       displayName = govStudents[email];
       destination = "gov";
     }
+    /* GATE CHEMISTRY ADMIN LOGIN */
+    else if (password === GATE_ADMIN_PASS) {
+      if (!(email in gateAdmins)) {
+        msgDiv.innerHTML = "Email ID not registered. Contact Admin";
+        msgDiv.className = "msg error";
+        return;
+      }
+      displayName = `Admin: ${gateAdmins[email]}`;
+      destination = "gate";
+    }
+    /* GATE CHEMISTRY STUDENT LOGIN */
+    else if (password === GATE_STUDENT_PASS) {
+      if (!(email in gateStudents)) {
+        msgDiv.innerHTML = "Email ID not registered. Contact Admin";
+        msgDiv.className = "msg error";
+        return;
+      }
+      displayName = gateStudents[email];
+      destination = "gate";
+    }
     /* STUDENT LOGIN */
     else if (password === STUDENT_PASS) {
       if (!(email in students)) {
@@ -1317,6 +1497,11 @@
         document.getElementById('govUserName').textContent = displayName;
         document.getElementById('govSection').classList.add('visible');
         renderGovSubjects();
+      } else if (destination === 'gate') {
+        document.getElementById('headerTitle').textContent = 'Class Management System (CMS)';
+        document.getElementById('gateUserName').textContent = displayName;
+        document.getElementById('gateSection').classList.add('visible');
+        renderGateTeachers();
       } else {
         document.getElementById('headerTitle').textContent = 'Class Management System (CMS)';
         document.getElementById('userName').textContent = displayName;
@@ -1326,7 +1511,7 @@
     }, 500);
   };
 
-  /* ─── RENDER TEACHERS ─── */
+  /* ─── RENDER TEACHERS (CMS / GPAT-NIPER-CUET) ─── */
   function renderTeachers() {
     const grid = document.getElementById('teacherGrid');
     grid.innerHTML = '';
@@ -1341,12 +1526,12 @@
     });
   }
 
-  /* ─── SELECT TEACHER ─── */
+  /* ─── SELECT TEACHER (CMS) ─── */
   function selectTeacher(key) {
     selectedTeacher = teachers.find(t => t.key === key);
     if (!selectedTeacher) return;
-    document.querySelectorAll('.teacher-card').forEach(c => c.classList.remove('selected'));
-    const target = document.querySelector(`.teacher-card[data-key="${key}"]`);
+    document.querySelectorAll('#teacherGrid .teacher-card').forEach(c => c.classList.remove('selected'));
+    const target = document.querySelector(`#teacherGrid .teacher-card[data-key="${key}"]`);
     if (target) target.classList.add('selected');
 
     document.getElementById('selName').textContent    = selectedTeacher.name;
@@ -1415,6 +1600,68 @@
       grid.appendChild(card);
     });
   }
+
+  /* ─── RENDER GATE CHEMISTRY TEACHERS ─── */
+  function renderGateTeachers() {
+    const grid = document.getElementById('gateTeacherGrid');
+    grid.innerHTML = '';
+    gateTeachers.forEach(t => {
+      const card = document.createElement('div');
+      card.className    = 'teacher-card';
+      card.dataset.key  = t.key;
+      card.onclick      = () => selectGateTeacher(t.key);
+      const hasContent  = !!(t.meet || t.playlist || t.notes);
+      card.innerHTML    = `${hasContent ? '<div class="t-badge"></div>' : ''}<div class="t-icon"><i class="${t.icon}"></i></div><div class="t-name">${t.name}</div><div class="t-subject">${t.subject}</div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ─── SELECT GATE CHEMISTRY TEACHER ─── */
+  function selectGateTeacher(key) {
+    selectedGateTeacher = gateTeachers.find(t => t.key === key);
+    if (!selectedGateTeacher) return;
+    document.querySelectorAll('#gateTeacherGrid .teacher-card').forEach(c => c.classList.remove('selected'));
+    const target = document.querySelector(`#gateTeacherGrid .teacher-card[data-key="${key}"]`);
+    if (target) target.classList.add('selected');
+
+    document.getElementById('gateSelName').textContent    = selectedGateTeacher.name;
+    document.getElementById('gateSelSubject').textContent = selectedGateTeacher.subject;
+    document.getElementById('gateSelAvatar').innerHTML    = `<i class="${selectedGateTeacher.icon}"></i>`;
+
+    const live = document.getElementById('gateLiveBtn');
+    if (selectedGateTeacher.meet) {
+      live.href = selectedGateTeacher.meet; live.className = 'panel-cta cta-live';
+      live.innerHTML = `<i class="fas fa-play-circle"></i> Join Live Class`;
+    } else {
+      live.href = '#'; live.className = 'panel-cta cta-disabled';
+      live.innerHTML = `<i class="fas fa-clock"></i> Coming Soon`;
+    }
+
+    const rec = document.getElementById('gateRecBtn');
+    if (selectedGateTeacher.playlist) {
+      rec.href = selectedGateTeacher.playlist; rec.className = 'panel-cta cta-rec';
+      rec.innerHTML = `<i class="fab fa-youtube"></i> Watch Recordings`;
+    } else {
+      rec.href = '#'; rec.className = 'panel-cta cta-disabled';
+      rec.innerHTML = `<i class="fas fa-clock"></i> Playlist Soon`;
+    }
+
+    const notes = document.getElementById('gateNotesBtn');
+    if (selectedGateTeacher.notes && selectedGateTeacher.notes.trim()) {
+      notes.href = selectedGateTeacher.notes; notes.className = 'panel-cta cta-notes';
+      notes.innerHTML = `<i class="fas fa-folder-open"></i> Access Notes`;
+    } else {
+      notes.href = '#'; notes.className = 'panel-cta cta-disabled';
+      notes.innerHTML = `<i class="fas fa-ban"></i> Notes Unavailable`;
+    }
+
+    document.getElementById('gatePanelsWrapper').classList.add('active');
+    setTimeout(() => document.getElementById('gatePanelsWrapper')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+  }
+
+  window.handleGateLive = function(e)  { if (!selectedGateTeacher?.meet)     { e.preventDefault(); return false; } return true; };
+  window.handleGateRec = function(e)   { if (!selectedGateTeacher?.playlist) { e.preventDefault(); return false; } return true; };
+  window.handleGateNotes = function(e) { if (!selectedGateTeacher?.notes)    { e.preventDefault(); alert("Class notes will be uploaded soon for this educator."); return false; } return true; };
 
   /* ─── SCROLL TOP ─── */
   window.addEventListener('scroll', () => {
